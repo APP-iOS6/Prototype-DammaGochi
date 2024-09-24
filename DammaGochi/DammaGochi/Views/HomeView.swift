@@ -10,6 +10,7 @@ import AVFoundation
 
 struct HomeView: View {
     @State private var isShowAR: Bool = false
+    @State private var addedAnimal: Bool = false
     
     var body: some View {
         ZStack {
@@ -26,7 +27,7 @@ struct HomeView: View {
             VStack{
                 HStack() {
                     Button(action: {
-                        print("add animal")
+                        addedAnimal = true
                     }) {
                         Image(systemName: "plus.circle")
                             .resizable()
@@ -51,6 +52,14 @@ struct HomeView: View {
                     Spacer()
                 }
             }
+            
+            HStack {
+                FirstLottieView()
+                
+                if addedAnimal {
+                    SecondLottieView()
+                }
+            }
         }
         
     }
@@ -63,6 +72,62 @@ struct HomeView: View {
                 print("Access denied")
             }
         }
+    }
+}
+
+struct FirstLottieView: View {
+    @State private var draggedOffset: CGSize = .zero
+    @State private var accumlatedOffset: CGSize = .zero
+    
+    var body: some View {
+        VStack {
+            LottieView(filename: "animationFile")
+                .frame(width: 150, height: 150)
+                .offset(x: draggedOffset.width, y: draggedOffset.height)
+                .gesture(drag)
+                .edgesIgnoringSafeArea(.all)
+            }
+    }
+    
+    var drag: some Gesture {
+        DragGesture()
+            .onChanged { gesture in
+                draggedOffset = accumlatedOffset + gesture.translation
+            }
+            .onEnded { gesture in
+                accumlatedOffset = accumlatedOffset + gesture.translation
+            }
+    }
+}
+
+struct SecondLottieView: View {
+    @State private var draggedOffset: CGSize = .zero
+    @State private var accumlatedOffset: CGSize = .zero
+    
+    var body: some View {
+        VStack {
+            LottieView(filename: "animationFile2")
+                .frame(width: 150, height: 150)
+                .offset(x: draggedOffset.width, y: draggedOffset.height)
+                .gesture(drag)
+                .edgesIgnoringSafeArea(.all)
+            }
+    }
+    
+    var drag: some Gesture {
+        DragGesture()
+            .onChanged { gesture in
+                draggedOffset = accumlatedOffset + gesture.translation
+            }
+            .onEnded { gesture in
+                accumlatedOffset = accumlatedOffset + gesture.translation
+            }
+    }
+}
+
+extension CGSize {
+    static func + (lhs: Self, rhs: Self) -> Self {
+        CGSize(width: lhs.width + rhs.width, height: lhs.height + rhs.height)
     }
 }
 
