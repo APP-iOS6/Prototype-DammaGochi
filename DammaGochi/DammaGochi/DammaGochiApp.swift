@@ -27,7 +27,7 @@ struct DammaGochiApp: App {
 
     var body: some Scene {
         WindowGroup {
-            PetCreateView()
+            CustomTabView()
         }
         .modelContainer(sharedModelContainer)
         .environmentObject(coinManager)

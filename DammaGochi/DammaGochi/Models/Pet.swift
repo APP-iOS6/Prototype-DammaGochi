@@ -6,8 +6,10 @@
 //
 
 import Foundation
+import SwiftData
 
-struct Pet: Identifiable {
+@Model
+class Pet: Identifiable {
     var id: UUID = UUID()
     var name: String
     var age: Int
@@ -17,4 +19,12 @@ struct Pet: Identifiable {
     // 일단은 어싱크 이미지로 주소 넣어놨습니다
     // TODO: 로티에서 이미지 따오기
     var imageStr: String
+    
+    init(name: String, age: Int, gender: String, personality: String, imageStr: String) {
+        self.name = name
+        self.age = age
+        self.gender = gender
+        self.personality = personality
+        self.imageStr = imageStr
+    }
 }
