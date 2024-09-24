@@ -1,18 +1,11 @@
 {
   "images" : [
     {
-<<<<<<< HEAD
-=======
-      "filename" : "coin.png",
->>>>>>> feat/game
+      "filename" : "game1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-<<<<<<< HEAD
-      "filename" : "coin.png",
-=======
->>>>>>> feat/game
       "idiom" : "universal",
       "scale" : "2x"
     },

@@ -144,5 +144,9 @@ struct CareZoneView: View {
                 Spacer()
             }
         }
+
+struct CareZoneView: View {
+    var body: some View {
+        Text("CareZone")
     }
 }
