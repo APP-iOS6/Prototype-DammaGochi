@@ -21,11 +21,12 @@
 # 개발자
 |이름|역할|
 |------|---|
+|**홍지수**| PM & CareZone 탭 |
 |**강희창**| Store 탭 |
 |**김수은**| Game 탭 |
 |**이소영**| My 탭 |
 |**최승호**| Home 탭 |
-|**홍지수**| CareZone 탭 |
+
 
 # 라이선스
 Licensed under the [MIT](LICENSE) license.
