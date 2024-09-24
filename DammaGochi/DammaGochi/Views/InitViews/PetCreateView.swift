@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PetCreateView: View {
+    @State var showHomeView: Bool = false
     @State private var selectedAnimalType: String = ""  // 어떤 동물인지
     @State private var selectedBreed: String = ""       // 입력한 동물의 종
     @State private var selectedColor: String = ""       // 입력한 펫의 색
@@ -23,91 +24,92 @@ struct PetCreateView: View {
     // -----------------------------------------------
     
     var body: some View {
-        NavigationView{
-            VStack(alignment: .leading, spacing: 20) {
+        VStack(alignment: .leading, spacing: 20) {
+            Spacer()
+            
+            // 첫 번째 텍스트: "당신만의 펫을 만들어보세요."
+            Text("당신만의 펫을 만들어보세요.")
+                .font(.title)
+                .opacity(showTitle ? 1 : 0) // 처음에는 숨기고, 애니메이션으로 나타남
+                .animation(.easeIn(duration: 1), value: showTitle) // 애니메이션 적용
+            
+            Spacer()
+            
+            // 두 번째 텍스트: "어떤 펫을 만들고 싶으신가요?"
+            AnimalTypeQuestionView(showAnimalTypeQuestion: $showAnimalTypeQuestion, selectedAnimalType: $selectedAnimalType, checkAllFields: checkAllFields)
+            
+            Spacer()
+            
+            // 세 번째 텍스트: "이 펫의 종은 무엇인가요?"
+            AnimalBreedQuestionView(showBreedQuestion: $showBreedQuestion, selectedBreed: $selectedBreed, checkAllFields: checkAllFields)
+            Spacer()
+            
+            // 네 번째 텍스트: "이 펫의 털은 무슨 색인가요?"
+            AnimalColorQuestionView(showColorQuestion: $showColorQuestion, selectedColor: $selectedColor, checkAllFields: checkAllFields)
+            Spacer()
+            
+            // 다섯 번째: 성별 선택
+            animalGenderQuestionView(showGenderPicker: $showGenderPicker, selectedGender: $selectedGender, checkAllFields: checkAllFields)
+            
+            Spacer()
+            
+            HStack {
                 Spacer()
-                
-                // 첫 번째 텍스트: "당신만의 펫을 만들어보세요."
-                Text("당신만의 펫을 만들어보세요.")
-                    .font(.title)
-                    .opacity(showTitle ? 1 : 0) // 처음에는 숨기고, 애니메이션으로 나타남
-                    .animation(.easeIn(duration: 1), value: showTitle) // 애니메이션 적용
-                
-                Spacer()
-                
-                // 두 번째 텍스트: "어떤 펫을 만들고 싶으신가요?"
-                AnimalTypeQuestionView(showAnimalTypeQuestion: $showAnimalTypeQuestion, selectedAnimalType: $selectedAnimalType, checkAllFields: checkAllFields)
-                
-                Spacer()
-                
-                // 세 번째 텍스트: "이 펫의 종은 무엇인가요?"
-                AnimalBreedQuestionView(showBreedQuestion: $showBreedQuestion, selectedBreed: $selectedBreed, checkAllFields: checkAllFields)
-                Spacer()
-                
-                // 네 번째 텍스트: "이 펫의 털은 무슨 색인가요?"
-                AnimalColorQuestionView(showColorQuestion: $showColorQuestion, selectedColor: $selectedColor, checkAllFields: checkAllFields)
-                Spacer()
-                
-                // 다섯 번째: 성별 선택
-                animalGenderQuestionView(showGenderPicker: $showGenderPicker, selectedGender: $selectedGender, checkAllFields: checkAllFields)
-                
-                Spacer()
-                
-                HStack {
-                    Spacer()
-                    NavigationLink(destination: CustomTabView()) {
-                        Text("생성하기")
-                    }
-                    .opacity(showCreateButton ? 1 : 0)
-                    .animation(.easeIn(duration: 1), value: showCreateButton)
-                    Spacer()
+                Button(action: {
+                    showHomeView = true
+                }) {
+                    Text("생성하기")
                 }
-                
-                Spacer()
-                
-                Group{
-                    Text("프로토타입앱으로 실제 선택한 펫이 생성되진 않습니다.")
-                    Text("모든 정보를 입력해야 다음 버튼이 나타납니다.")
+                .opacity(showCreateButton ? 1 : 0)
+                .animation(.easeIn(duration: 1), value: showCreateButton)
+                .fullScreenCover(isPresented: $showHomeView) {
+                    CustomTabView()
                 }
-                .font(.caption)
-                .foregroundStyle(.secondary)
-                
                 Spacer()
             }
-            .padding()
-            .onAppear {
+            
+            Spacer()
+            
+            Group{
+                Text("프로토타입앱으로 실제 선택한 펫이 생성되진 않습니다.")
+                Text("모든 정보를 입력해야 다음 버튼이 나타납니다.")
+            }
+            .font(.caption)
+            .foregroundStyle(.secondary)
+            
+            Spacer()
+        }
+        .padding()
+        .onAppear {
+            withAnimation(.easeIn(duration: 1)) {
+                showTitle = true
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 withAnimation(.easeIn(duration: 1)) {
-                    showTitle = true
+                    showAnimalTypeQuestion = true
                 }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    withAnimation(.easeIn(duration: 1)) {
-                        showAnimalTypeQuestion = true
-                    }
+            }
+            // 두 번째 텍스트가 등장한 1초 후 세 번째 텍스트
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                withAnimation {
+                    showBreedQuestion = true
                 }
-                // 두 번째 텍스트가 등장한 1초 후 세 번째 텍스트
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                    withAnimation {
-                        showBreedQuestion = true
-                    }
+            }
+            
+            // 세 번째 텍스트가 등장한 1초 후 네 번째 텍스트
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                withAnimation {
+                    showColorQuestion = true
                 }
-                
-                // 세 번째 텍스트가 등장한 1초 후 네 번째 텍스트
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                    withAnimation {
-                        showColorQuestion = true
-                    }
-                }
-                
-                // 네 번째 텍스트가 등장한 1초 후 성별 선택
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-                    withAnimation {
-                        showGenderPicker = true
-                    }
+            }
+            
+            // 네 번째 텍스트가 등장한 1초 후 성별 선택
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+                withAnimation {
+                    showGenderPicker = true
                 }
             }
         }
-        
-        
     }
     // 모든 필드가 채워졌는지 확인하는 함수
     func checkAllFields() {

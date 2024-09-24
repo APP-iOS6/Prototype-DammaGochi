@@ -12,7 +12,7 @@ import SwiftData
 struct DammaGochiApp: App {
     var body: some Scene {
         WindowGroup {
-            CustomTabView()
+            PetCreateView()
         }
     }
 }
