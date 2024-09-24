@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		8BB377682CA25FF700CBB1EA /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 8BB377672CA25FF700CBB1EA /* Lottie */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		8BD2C4B12CA23B9D0029F6F8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BB377682CA25FF700CBB1EA /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,12 +77,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8BB377662CA25FF700CBB1EA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8BD2C4952CA23B9B0029F6F8 = {
 			isa = PBXGroup;
 			children = (
 				8BD2C4A02CA23B9B0029F6F8 /* DammaGochi */,
 				8BD2C4B32CA23B9D0029F6F8 /* DammaGochiTests */,
 				8BD2C4BD2CA23B9D0029F6F8 /* DammaGochiUITests */,
+				8BB377662CA25FF700CBB1EA /* Frameworks */,
 				8BD2C49F2CA23B9B0029F6F8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -112,6 +125,7 @@
 			);
 			name = DammaGochi;
 			packageProductDependencies = (
+				8BB377672CA25FF700CBB1EA /* Lottie */,
 			);
 			productName = DammaGochi;
 			productReference = 8BD2C49E2CA23B9B0029F6F8 /* DammaGochi.app */;
@@ -195,6 +209,9 @@
 			);
 			mainGroup = 8BD2C4952CA23B9B0029F6F8;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				8BB377652CA25FBA00CBB1EA /* XCRemoteSwiftPackageReference "lottie-ios" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 8BD2C49F2CA23B9B0029F6F8 /* Products */;
 			projectDirPath = "";
@@ -558,6 +575,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8BB377652CA25FBA00CBB1EA /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8BB377672CA25FF700CBB1EA /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8BB377652CA25FBA00CBB1EA /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8BD2C4962CA23B9B0029F6F8 /* Project object */;
 }
