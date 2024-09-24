@@ -24,16 +24,26 @@ struct HomeView: View {
             }
             
             VStack{
+                HStack() {
+                    Button(action: {
+                        print("add animal")
+                    }) {
+                        Image(systemName: "plus.circle")
+                            .resizable()
+                            .frame(width: 50, height: 50)
+                    }
+                    .padding(.leading, 20)
+                    .padding(.top, 20)
+                    Spacer()
+                }
                 Spacer()
-                HStack(spacing: 20){
+                HStack(){
                     Button(action: {
                         isShowAR.toggle()
                     }) {
                         ZStack {
-                            Circle()
-                                .fill(Color.cyan)
-                                .frame(width: 50, height: 50)
-                            Image(systemName: "web.camera")
+                            Image(systemName: "camera.rotate")
+                                .font(.largeTitle)
                         }
                     }
                     .padding(.leading, 20)
@@ -42,6 +52,7 @@ struct HomeView: View {
                 }
             }
         }
+        
     }
     
     func requestCameraPermission() {
