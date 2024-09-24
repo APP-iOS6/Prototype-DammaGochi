@@ -10,6 +10,7 @@ import SwiftData
 
 @main
 struct DammaGochiApp: App {
+    @StateObject var coinManager: CoinManager = CoinManager()
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Pet.self,
@@ -28,5 +29,6 @@ struct DammaGochiApp: App {
             CustomTabView()
         }
         .modelContainer(sharedModelContainer)
+        .environmentObject(coinManager)
     }
 }

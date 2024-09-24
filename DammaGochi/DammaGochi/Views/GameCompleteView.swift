@@ -10,7 +10,7 @@ import SwiftUI
 struct GameCompleteView: View {
     @State var isAnimating: Bool = false
     @State private var rotateCircle = false
-
+    @EnvironmentObject var coinManager: CoinManager
     @Binding var showCircle: Bool
     
     var body: some View {
@@ -32,6 +32,7 @@ struct GameCompleteView: View {
                 
                     .onAppear {
                         isAnimating = true
+                        coinManager.endGame()
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                             rotateCircle = true
                         }
