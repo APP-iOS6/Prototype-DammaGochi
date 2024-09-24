@@ -19,17 +19,43 @@ struct ItemGridSheetView: View {
     
     var body: some View {
         ScrollView {
-            LazyVGrid(columns: columns, spacing: 20) {
-                // 12개의 아이템을 그리드로 표시
-                ForEach(1...12, id: \.self) { item in
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 10)
-                            .fill(Color.blue)
-                            .frame(height: 100)
-                        
-                        Text("Item \(item)")
-                            .foregroundColor(.white)
-                            .font(.headline)
+            VStack {
+            Text("상의")
+                .font(.caption)
+                .bold()
+                .padding()
+                LazyVGrid(columns: columns, spacing: 20) {
+                    // 6개의 아이템을 그리드로 표시
+                    ForEach(1...6, id: \.self) { item in
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(Color.brown)
+                                .frame(height: 100)
+                            
+                            Text("Item \(item)")
+                                .foregroundColor(.white)
+                                .font(.headline)
+                        }
+                    }
+                }
+                
+                VStack {
+                    Text("모자")
+                        .font(.caption)
+                        .bold()
+                        .padding()
+                    LazyVGrid(columns: columns, spacing: 20) {
+                        ForEach(1...6, id: \.self) { item in
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 10)
+                                    .fill(Color.brown)
+                                    .frame(height: 100)
+                                
+                                Text("Item \(item)")
+                                    .foregroundColor(.white)
+                                    .font(.headline)
+                            }
+                        }
                     }
                 }
             }
