@@ -12,7 +12,7 @@ import SwiftData
 struct DammaGochiApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Item.self,
+            Pet.self,
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
@@ -25,7 +25,7 @@ struct DammaGochiApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            CustomTabView()
         }
         .modelContainer(sharedModelContainer)
     }
