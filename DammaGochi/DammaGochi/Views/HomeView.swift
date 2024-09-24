@@ -27,6 +27,10 @@ struct HomeView: View {
                         .onDisappear() {
                             isShowAR = false
                         }
+                } else {
+                    Image("livingroom")
+                        .resizable()
+                        .scaledToFit()
                 }
                 
                 VStack{
@@ -34,26 +38,36 @@ struct HomeView: View {
                         NavigationLink(destination: PetCreateView()) {
                             Image(systemName: "plus.circle")
                                 .resizable()
+                                .aspectRatio(contentMode: .fit)
                                 .frame(width: 50, height: 50)
+                                .foregroundColor(.white)
+                                .background(Color.brown)
+                                .clipShape(Circle()) // 이미지를 원형 버튼으로 만들기
+                                .shadow(radius: 5)
                         }
                         .disabled(pets.count >= 2)
                         .padding(.leading, 20)
-                        .padding(.top, 20)
+                        .padding(.top, 40)
                         
                         Spacer()
                     }
                     Spacer()
                     HStack(){
-                        Button(action: {
+                        Button {
                             isShowAR.toggle()
-                        }) {
-                            ZStack {
-                                Image(systemName: "camera.rotate")
-                                    .font(.largeTitle)
-                            }
+                        } label: {
+                            Image(systemName: "camera.circle")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 50, height: 50)
+                                .foregroundColor(.white)
+                                .background(Color.brown)
+                                .clipShape(Circle()) // 이미지를 원형 버튼으로 만들기
+                                .shadow(radius: 5)
                         }
                         .padding(.leading, 20)
-                        .padding(.bottom, 20)
+                        .padding(.bottom, 40)
+                        
                         Spacer()
                     }
                 }
