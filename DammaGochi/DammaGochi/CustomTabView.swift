@@ -9,8 +9,8 @@ import SwiftUI
 import SwiftData
 
 struct CustomTabView: View {
-    @Environment(\.modelContext) private var modelContext
-    @Query private var pets: [Pet]
+    //@Environment(\.modelContext) private var modelContext
+    //@Query private var pets: [Pet]
     
     var body: some View {
 
