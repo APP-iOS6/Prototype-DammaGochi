@@ -10,6 +10,10 @@ import SwiftUI
 struct Item: Identifiable {
     var id: UUID = UUID()
     var name: String
-    var itemNum: Int
-    var imageURL: String
+    var itemNum: Int = 0
+    var price: Int = 10
+    var imageName: String
+    var category: String = ""
+    //let imageName: String
 }
+

@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct FeedGridSheetView: View {
-    @State var feeds: [Item] = ItemStores().feeds
+    var itemStores = ItemStores()
+//    @State var feeds: [Item] = itemStores.feeds
     @State var nutrients: [Item] = ItemStores().nutrients
     
     let columns = [
@@ -19,8 +20,9 @@ struct FeedGridSheetView: View {
     
     var body: some View {
         ScrollView {
-                GridSheetSubView(items: feeds, name: "사료")
-                GridSheetSubView(items: nutrients, name: "영양제")
+            GridSheetSubView(itemStore: itemStores, name: "사료")
+            GridSheetSubView(itemStore: itemStores, name: "사료")
+//                GridSheetSubView(items: nutrients, name: "영양제")
         }
         .presentationDetents([.medium, .large]) // Sheet 크기를 조정 가능
         .padding()

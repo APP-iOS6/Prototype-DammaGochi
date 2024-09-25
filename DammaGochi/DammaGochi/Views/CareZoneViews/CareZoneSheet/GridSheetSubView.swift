@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct GridSheetSubView: View {
-    let items: [Item]
+    @Bindable var itemStore: ItemStores
     let name: String
+    
     let columns = [
         GridItem(.flexible()),
         GridItem(.flexible()),
@@ -30,7 +31,8 @@ struct GridSheetSubView: View {
         }
         
         LazyVGrid(columns: columns, spacing: 20) {
-            ForEach(items) { item in
+            ForEach(itemStore.feeds) { item in
+                
                 Button(action: {
                     // 버튼 클릭 시 동작
                 }) {
@@ -44,15 +46,15 @@ struct GridSheetSubView: View {
                                 .font(.subheadline)
                                 .bold()
                                 .foregroundStyle(.brown)
-//                                .padding()
-                            Image(item.imageURL)
+                            //                                .padding()
+                            Image(item.imageName)
                                 .resizable()
                                 .frame(width: 50, height: 50)
                             Text("\(item.itemNum)")
                                 .font(.caption)
                                 .foregroundStyle(.yellow)
                                 .bold()
-//                                .padding()
+                            
                         }
                     }
                 }
@@ -60,7 +62,7 @@ struct GridSheetSubView: View {
         }
     }
 }
-
-//#Preview {
-//    FeedGridSheetSubView(items: <#T##[Item]#>, name: "")
-//}
+    
+    //#Preview {
+    //    FeedGridSheetSubView(items: <#T##[Item]#>, name: "")
+    //}

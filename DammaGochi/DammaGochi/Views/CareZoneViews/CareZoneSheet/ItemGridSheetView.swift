@@ -22,8 +22,8 @@ struct ItemGridSheetView: View {
     var body: some View {
         ScrollView {
             VStack {
-                GridSheetSubView(items: tops, name: "상의")
-                GridSheetSubView(items: caps, name: "모자")
+//                GridSheetSubView(items: tops, name: "상의")
+//                GridSheetSubView(items: caps, name: "모자")
             }
             .padding()
         }
