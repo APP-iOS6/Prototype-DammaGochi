@@ -10,6 +10,8 @@ import SwiftUI
 
 
 struct ItemGridSheetView: View {
+    @State var tops: [Item] = ItemStores().tops
+    @State var caps: [Item] = ItemStores().caps
     // 그리드 레이아웃: 각 행에 2개의 아이템을 표시하는 레이아웃 설정
     let columns = [
         GridItem(.flexible()),
@@ -20,44 +22,8 @@ struct ItemGridSheetView: View {
     var body: some View {
         ScrollView {
             VStack {
-            Text("상의")
-                .font(.caption)
-                .bold()
-                .padding()
-                LazyVGrid(columns: columns, spacing: 20) {
-                    // 6개의 아이템을 그리드로 표시
-                    ForEach(1...6, id: \.self) { item in
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 10)
-                                .fill(Color.brown)
-                                .frame(height: 100)
-                            
-                            Text("Item \(item)")
-                                .foregroundColor(.white)
-                                .font(.headline)
-                        }
-                    }
-                }
-                
-                VStack {
-                    Text("모자")
-                        .font(.caption)
-                        .bold()
-                        .padding()
-                    LazyVGrid(columns: columns, spacing: 20) {
-                        ForEach(1...6, id: \.self) { item in
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 10)
-                                    .fill(Color.brown)
-                                    .frame(height: 100)
-                                
-                                Text("Item \(item)")
-                                    .foregroundColor(.white)
-                                    .font(.headline)
-                            }
-                        }
-                    }
-                }
+                GridSheetSubView(items: tops, name: "상의")
+                GridSheetSubView(items: caps, name: "모자")
             }
             .padding()
         }
