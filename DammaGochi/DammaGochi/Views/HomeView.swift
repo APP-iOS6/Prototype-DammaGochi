@@ -7,61 +7,81 @@
 
 import SwiftUI
 import AVFoundation
+import SwiftData
 
 struct HomeView: View {
+    @Environment(\.modelContext) private var modelContext
+    @Query private var pets: [Pet]
     @State private var isShowAR: Bool = false
-    @State private var addedAnimal: Bool = false
+    @State var addedAnimal: Bool = false
+    @State var isShowAddSheet: Bool = false
     
     var body: some View {
-        ZStack {
-            if isShowAR {
-                ARViewContainer(isShowAR: $isShowAR)
-                    .onAppear {
-                        requestCameraPermission()
-                    }
-                    .onDisappear() {
-                        isShowAR = false
-                    }
-            }
-            
-            VStack{
-                HStack() {
-                    Button(action: {
-                        addedAnimal = true
-                    }) {
-                        Image(systemName: "plus.circle")
-                            .resizable()
-                            .frame(width: 50, height: 50)
-                    }
-                    .padding(.leading, 20)
-                    .padding(.top, 20)
-                    Spacer()
-                }
-                Spacer()
-                HStack(){
-                    Button(action: {
-                        isShowAR.toggle()
-                    }) {
-                        ZStack {
-                            Image(systemName: "camera.rotate")
-                                .font(.largeTitle)
+        NavigationView {
+            ZStack {
+                if isShowAR {
+                    ARViewContainer(isShowAR: $isShowAR)
+                        .onAppear {
+                            requestCameraPermission()
                         }
+                        .onDisappear() {
+                            isShowAR = false
+                        }
+                } else {
+                    Image("livingroom")
+                        .resizable()
+                        .scaledToFit()
+                }
+                
+                VStack{
+                    HStack() {
+                        NavigationLink(destination: PetCreateView()) {
+                            Image(systemName: "plus.circle")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 50, height: 50)
+                                .foregroundColor(.white)
+                                .background(Color.brown)
+                                .clipShape(Circle()) // 이미지를 원형 버튼으로 만들기
+                                .shadow(radius: 5)
+                        }
+                        .disabled(pets.count >= 2)
+                        .padding(.leading, 20)
+                        .padding(.top, 40)
+                        
+                        Spacer()
                     }
-                    .padding(.leading, 20)
-                    .padding(.bottom, 20)
                     Spacer()
+                    HStack(){
+                        Button {
+                            isShowAR.toggle()
+                        } label: {
+                            Image(systemName: "camera.circle")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 50, height: 50)
+                                .foregroundColor(.white)
+                                .background(Color.brown)
+                                .clipShape(Circle()) // 이미지를 원형 버튼으로 만들기
+                                .shadow(radius: 5)
+                        }
+                        .padding(.leading, 20)
+                        .padding(.bottom, 40)
+                        
+                        Spacer()
+                    }
+                }
+                
+                ZStack {
+                    FirstLottieView()
+                    
+                    if pets.count >= 2 {
+                        SecondLottieView()
+                    }
                 }
             }
             
-            HStack {
-                FirstLottieView()
-                
-                if addedAnimal {
-                    SecondLottieView()
-                }
-            }
         }
-        
     }
     
     func requestCameraPermission() {
@@ -81,7 +101,7 @@ struct FirstLottieView: View {
     
     var body: some View {
         VStack {
-            LottieView(filename: "animationFile")
+            LottieView(filename: "animationOne")
                 .frame(width: 150, height: 150)
                 .offset(x: draggedOffset.width, y: draggedOffset.height)
                 .gesture(drag)
@@ -107,7 +127,7 @@ struct SecondLottieView: View {
     var body: some View {
         VStack {
             LottieView(filename: "animationFile2")
-                .frame(width: 150, height: 150)
+                .frame(width: 300, height: 300)
                 .offset(x: draggedOffset.width, y: draggedOffset.height)
                 .gesture(drag)
                 .edgesIgnoringSafeArea(.all)

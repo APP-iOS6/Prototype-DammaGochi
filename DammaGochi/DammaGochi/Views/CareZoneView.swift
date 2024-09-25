@@ -11,13 +11,13 @@ import Lottie
 struct CareZoneView: View {
     @State private var energyProgress: Double = 0.0
     @State private var loyaltyProgress: Double = 0.0
-
+    
     @State private var isFeedshow = false
     @State private var isItemshow = false
     
     @State private var currentAnimation = "animationOne" // 기본 애니메이션 파일명
     @State private var isPlayingSecondary = false // 현재 두 번째 애니메이션 재생 중인지 여부
-
+    
     
     var body: some View {
         ZStack {
@@ -150,3 +150,4 @@ struct CareZoneView: View {
 #Preview {
     CareZoneView()
 }
+

@@ -6,9 +6,13 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct PetCreateView: View {
-    @State var showHomeView: Bool = false
+    @Environment(\.modelContext) private var modelContext
+    @Query private var pets: [Pet]
+    
+    @State var showTabView: Bool = false
     @State private var selectedAnimalType: String = ""  // 어떤 동물인지
     @State private var selectedBreed: String = ""       // 입력한 동물의 종
     @State private var selectedColor: String = ""       // 입력한 펫의 색
@@ -56,13 +60,15 @@ struct PetCreateView: View {
             HStack {
                 Spacer()
                 Button(action: {
-                    showHomeView = true
+                    showTabView = true
+                    let newPet = Pet(name: "고양", age: 2, gender: "♂", personality: "고양이인척 하는 토끼입니다...!", imageStr: "https://emojigraph.org/media/apple/rabbit-face_1f430.png")
+                    modelContext.insert(newPet)
                 }) {
                     Text("생성하기")
                 }
                 .opacity(showCreateButton ? 1 : 0)
                 .animation(.easeIn(duration: 1), value: showCreateButton)
-                .fullScreenCover(isPresented: $showHomeView) {
+                .fullScreenCover(isPresented: $showTabView) {
                     CustomTabView()
                 }
                 Spacer()
@@ -87,25 +93,8 @@ struct PetCreateView: View {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 withAnimation(.easeIn(duration: 1)) {
                     showAnimalTypeQuestion = true
-                }
-            }
-            // 두 번째 텍스트가 등장한 1초 후 세 번째 텍스트
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                withAnimation {
                     showBreedQuestion = true
-                }
-            }
-            
-            // 세 번째 텍스트가 등장한 1초 후 네 번째 텍스트
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                withAnimation {
                     showColorQuestion = true
-                }
-            }
-            
-            // 네 번째 텍스트가 등장한 1초 후 성별 선택
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-                withAnimation {
                     showGenderPicker = true
                 }
             }
