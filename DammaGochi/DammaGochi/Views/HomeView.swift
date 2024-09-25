@@ -33,11 +33,11 @@ struct HomeView: View {
                     Image("livingroom")
                         .resizable()
                         .aspectRatio(contentMode: .fill)
-                        .ignoresSafeArea()
+                        .ignoresSafeArea(edges: .top)
                 }
                 
                 VStack{
-                    HStack {
+                    HStack (alignment: .center, spacing: 20){
                         NavigationLink(destination: PetCreateView()) {
                             ZStack {
                                 Circle()
@@ -56,12 +56,16 @@ struct HomeView: View {
                                     .shadow(radius: 5)
                             }
                             .disabled(pets.count >= 2)
-                            .padding(.leading, 20)
-                            .padding(.top, 40)
                         }
                         .onAppear {
                             isAnimate = pets.count == 0 ? true : false
                             scale = isAnimate ? 1.2 : 1.0
+                        }
+                        if isAnimate{
+                            Text("반려동물을 생성해주세요")
+                                .foregroundStyle(.white)
+                                .font(.title3)
+                                .fontWeight(.heavy)
                         }
                         Spacer()
                     }
@@ -80,16 +84,15 @@ struct HomeView: View {
                                 .clipShape(Circle()) // 이미지를 원형 버튼으로 만들기
                                 .shadow(radius: 5)
                         }
-                        .padding(.leading, 20)
-                        .padding(.bottom, 40)
-                        
                         Spacer()
                     }
                 }
+                .padding(50)
                 
                 ZStack {
-                    FirstLottieView()
-                    
+                    if pets.count > 0 {
+                        FirstLottieView()
+                    }
                     if pets.count >= 2 {
                         SecondLottieView()
                     }

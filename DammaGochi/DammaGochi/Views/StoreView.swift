@@ -23,14 +23,14 @@ struct StoreView: View {
     //    let products = Array(repeating: "상품", count: 10)
     let products = [
         Product(name: "1등급 댕댕이 펫밀크", price: 10, imageName: "petMilk", category: "간식"),
-        Product(name: "1등급 냥냥이 츄르", price: 10, imageName: "chur", category: "간식"),
+        Product(name: "1등급 냥냥이 츄르", price: 10, imageName: "Chur", category: "간식"),
         Product(name: "냥냥이 낚시", price: 50, imageName: "catFish", category: "장난감"),
         Product(name: "댕댕이 공놀이", price: 50, imageName: "dogBall", category: "장난감"),
         Product(name: "레드 스트라이프 티셔츠", price: 150, imageName: "red", category: "의류"),
         Product(name: "블루 스트라이프 티셔츠", price: 150, imageName: "blue", category: "의류"),
     ]
     
-    @StateObject private var coinManager = CoinManager()
+    @EnvironmentObject var coinManager: CoinManager
     @State private var showAlert: Bool = false
     @State private var selectedProduct: Product?
     @State private var ownedProducts: [UUID] = []   //구매된 상품 ID로 저장하기 위함
@@ -144,13 +144,13 @@ struct StoreView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     HStack {
-                        Text("\(coinManager.coin)")
-                            .font(.headline)
-                        Image("coin")
-                            .resizable()
-                            .frame(width: 20, height: 20)
+                        HStack{
+                            Image("coin")
+                                .resizable()
+                                .frame(width: 25, height: 25)
+                            Text("\(coinManager.coin)")
+                        }
                     }
-                    .padding()
                 }
             }
             .alert(isPresented: $showAlert) {
@@ -196,5 +196,6 @@ struct StoreView: View {
 struct StoreView_Previews: PreviewProvider {
     static var previews: some View {
         StoreView()
+            .environmentObject(CoinManager())
     }
 }

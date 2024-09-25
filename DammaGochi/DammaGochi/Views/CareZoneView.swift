@@ -24,10 +24,7 @@ struct CareZoneView: View {
             ZStack {
                 Image("PetHouse")
                     .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .ignoresSafeArea(edges: .top)
-                
-                
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                 VStack {
                     Spacer()
                     HStack(alignment: .center){
@@ -147,6 +144,7 @@ struct CareZoneView: View {
                     Spacer()
                 }
             }
+            .ignoresSafeArea(edges: .top)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink{
@@ -167,11 +165,9 @@ struct CareZoneView: View {
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                 }
-                
             }
         }
     }
-    
 }
 
 

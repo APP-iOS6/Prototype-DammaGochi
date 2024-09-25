@@ -15,13 +15,11 @@ struct CustomTabView: View {
             Tab("Home", systemImage: "house.circle.fill") {
                 HomeView()
             }
-            
-            Tab("Game", systemImage: "gamecontroller.circle.fill") {
-                GameView()
-            }
-            
             Tab("CareZone", systemImage: "pawprint.circle.fill") {
                 CareZoneView()
+            }
+            Tab("Game", systemImage: "gamecontroller.circle.fill") {
+                GameView()
             }
 
             Tab("Store", systemImage: "storefront.circle.fill") {

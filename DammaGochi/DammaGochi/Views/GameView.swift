@@ -11,7 +11,7 @@ import SwiftUI
 struct GameView: View {
     let gridItem = Array(repeating: GridItem(.flexible()), count: 2)
     let gameImageName: [String] = ["game1", "game2", "game3", "game4","game5","game6"]
-    let gameName: [String] = ["산책하기", "올림픽 하기", "옷 입히기", "친구 만들기", "간식 주기", "공 안떨어뜨리기"]
+    let gameName: [String] = ["산책하기", "원 잘 그리기", "옷 입히기", "친구 만들기", "간식 주기", "공 안떨어뜨리기"]
     @State var gameCompleted: Bool = false
     @State var showCircle: Bool = false
     @State var isGameEnd: Bool = false
@@ -24,6 +24,7 @@ struct GameView: View {
                         ForEach(gameImageName.indices, id: \.self) { index in
                             NavigationLink{
                                 GamePlayView(gameComplted: $gameCompleted)
+                                    .navigationBarBackButtonHidden(true)
                             }label:{
                                 gameImageName(gameImageName: gameImageName[index])
                                     .overlay{
@@ -41,14 +42,19 @@ struct GameView: View {
                                             .padding(5)
                                             Text(gameName[index])
                                                 .fontWeight(.heavy)
-                                                .font(.system(size: 28))
+                                                .font(.system(size: 25))
                                                 .foregroundStyle(.white)
+                                                .padding(.horizontal,10)
+                                                .background{
+                                                    RoundedRectangle(cornerRadius: 8)
+                                                        .fill(.brown.opacity(0.5))
+                                                }
                                             Spacer()
                                             Text("Start")
                                                 .padding(.vertical, 10)
                                                 .padding(.horizontal,55)
                                                 .foregroundStyle(.white)
-                                                .background(.green.gradient)
+                                                .background(.brown.gradient)
                                                 .clipShape(RoundedRectangle(cornerRadius: 8))
                                                 .padding(.bottom, 10)
                                         }
