@@ -28,9 +28,7 @@ struct PetCreateView: View {
     // -----------------------------------------------
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 20) {
-            Spacer()
-            
+        VStack(alignment: .leading) {            
             // 첫 번째 텍스트: "당신만의 펫을 만들어보세요."
             Text("당신만의 펫을 만들어보세요.")
                 .font(.title)
@@ -73,9 +71,7 @@ struct PetCreateView: View {
                 }
                 Spacer()
             }
-            
             Spacer()
-            
             Group{
                 Text("프로토타입앱으로 실제 선택한 펫이 생성되진 않습니다.")
                 Text("모든 정보를 입력해야 다음 버튼이 나타납니다.")
@@ -83,7 +79,6 @@ struct PetCreateView: View {
             .font(.caption)
             .foregroundStyle(.secondary)
             
-            Spacer()
         }
         .padding()
         .onAppear {
