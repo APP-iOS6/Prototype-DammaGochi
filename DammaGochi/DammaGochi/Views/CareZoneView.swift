@@ -60,10 +60,14 @@ struct CareZoneView: View {
                     // 에너지
                     HStack {
                         Image(systemName: "heart.fill")
-                            .background(Color.red)
+                            .foregroundStyle(Color.red)
                         ProgressView("Energy", value: energyProgress, total: 1.0)
                             .font(.footnote)
+                            .bold()
+                            .foregroundStyle(.white)
                             .progressViewStyle(LinearProgressViewStyle(tint: .red))
+                            .frame(height: 20) // 높이 조절
+                            .cornerRadius(5) // 모서리 둥글게
                             .padding()
                     }
                     .frame(width: 300)
@@ -71,10 +75,14 @@ struct CareZoneView: View {
                     // 충성도
                     HStack {
                         Image(systemName: "star.fill")
-                            .background(Color.yellow)
+                            .foregroundStyle(Color.yellow)
                         ProgressView("Loyalty", value: loyaltyProgress, total: 1.0)
                             .font(.footnote)
+                            .bold()
+                            .foregroundStyle(.white)
                             .progressViewStyle(LinearProgressViewStyle(tint: .yellow))
+//                            .frame(height: 20) // 높이 조절
+//                            .cornerRadius(5) // 모서리 둥글게
                             .padding()
                     }
                     .frame(width: 300)
@@ -151,19 +159,19 @@ struct CareZoneView: View {
                     }
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
-                        NavigationLink(destination: MyView()) {
-                            Image("cat")
-                                .resizable()
-                                .frame(width: 35, height: 35)
-                                .clipShape(Circle())
-                        }
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                    NavigationLink(destination: MyView()) {
+                        Image("cat")
+                            .resizable()
+                            .frame(width: 35, height: 35)
+                            .clipShape(Circle())
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
                 }
-
+                
             }
         }
     }
-
+    
 }
 
 
