@@ -1,22 +1,27 @@
 # 🥚🐶 담아고치 
 # 🥚 ADS
-내 반려동물 캐릭터를 만들어 기기에 담아 다마고치처럼 키우는 게임 어플리케이션 "담아고치"
+내 반려동물 캐릭터를 만들어 모바일 디바이스에 담아 다마고치처럼 키우는 게임 어플리케이션 "담아고치"
 <br/><br/>
 <img src="https://github.com/user-attachments/assets/3a6b17c3-e112-4bee-9e1b-610989963660" width="200" height="200"/> 
-<br/>
+<br/><br/>
 
 # 🥚 주요기능
- _내 앱에서 반려동물을 키우는 듯한 경험을 제공합니다!_
+ _내가 들고다니는 핸드폰 안에서 사는 반려동물을 키우는 듯한 경험을 제공합니다! 마치, 다마고치처럼요 ..🥚_
  <br/>
-- **시작 전 **: 키우고 싶은 **반려동물 캐릭터**를 생성하세요
--** 🏠 Home** : 캐릭터에게 밥도 주고, 놀아주고, 꾸며주며 다마고치처럼 쑥쑥 길러주세요
-- **🛁 Care Zone** : 반려동물 여러 마리가 함께 뛰어놀아요. AR 기술로 내 방안에 함께 있는 기분이에요.
+- **시작 전**: 키우고 싶은 **반려동물 캐릭터**를 생성하세요
+
+<br/>
+
+-**🏠 Home** : 반려동물 여러 마리가 함께 뛰어놀아요. AR 기술로 내 방안에 함께 있는 기분이에요.
+- **🛁 Care Zone** : 캐릭터에게 밥도 주고, 놀아주고, 꾸며주며 다마고치처럼 쑥쑥 길러주세요
 - **🕹️ Game** : 게임을 하면서 더 재미있게 놀아주세요! 산책도 하고, 친구도 사귀고 공놀이도 하면서 코인도 모아봐요 🪙
 - **🏪 Store** : 아이템을 구매하고 반려동물에게 선물해주세요
 <br/><br/>
 
 # 🥚 동작화면
 ### Home                      홈 내부 - 생성하기 버튼
+- 내가 원하는 생김새의 반려동물을 입양할 수 있습니다 !
+- AR 기능으로, 내 공간에 반려동물과 함께 있는 것처럼 느낄 수 있어요!
 <img src="https://github.com/user-attachments/assets/f96fa888-41d8-4559-bd89-7088d48888e5" width="200" height="400"/> 
 <img src="https://github.com/user-attachments/assets/49bb6ef5-2d82-4ae5-8772-ed4b233f26b5" width="200" height="400"/>
     
@@ -25,15 +30,21 @@
 <br/>
 
 ### CareZone
+- 밥을 주고, 잘 놀아주면, 반려동물의 에너지와 충성도가 상승합니다 ! 예쁘게 꾸며주기도 하세요.
+- 프로필을 눌러 다른 반려동물로 전환해보세요!
 <img src="https://github.com/user-attachments/assets/b5a177ea-04c9-412b-a99b-e85f2353a81f" width="200" height="400"/>  
 <img src="https://github.com/user-attachments/assets/ba10d8fb-c5ce-4564-90ff-c00a3ec23565" width="200" height="400"/>
 <br/>
 
 ### Game
+- 10코인을 써서 반려동물의 친구도 만들어 주고, 산책도 시켜주세요!
+- 게임 후에는 코인이 몇 배나 불어나 있을 거에요.
 <img src="https://github.com/user-attachments/assets/1cc9a68c-634f-4a46-93ef-3f8f8a42bbeb" width="200" height="400"/>
 <br/>
 
 ### Store
+- 내 반려동물에게 어울리는 옷, 필요한 밥이나 간식 등 여러 아이템을 쇼핑해 보세요!
+- 앗! 코인이 부족하다구요? 반려동물과 놀아주고 게임해주면 더 많은 코인을 얻을 수 있어요.
 <img src="https://github.com/user-attachments/assets/79e39d13-2553-48ca-9af0-688a8603717e" width="200" height="400"/>
 <br/>
 
