@@ -17,4 +17,10 @@ class CoinManager: ObservableObject{
     func endGame(){
         self.coin += 100
     }
+    
+    func storeCoin(price: Int) {
+            if coin >= price {
+                coin -= price
+            }
+        }
 }
