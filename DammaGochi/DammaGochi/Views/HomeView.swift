@@ -32,7 +32,6 @@ struct HomeView: View {
                 } else {
                     Image("livingroom")
                         .resizable()
-                        .aspectRatio(contentMode: .fill)
                         .ignoresSafeArea(edges: .top)
                 }
                 
@@ -72,6 +71,8 @@ struct HomeView: View {
                     Spacer()
                     
                     HStack(){
+                        Spacer()
+
                         Button {
                             isShowAR.toggle()
                         } label: {
@@ -87,7 +88,7 @@ struct HomeView: View {
                         Spacer()
                     }
                 }
-                .padding(50)
+                .padding(30)
                 
                 ZStack {
                     if pets.count > 0 {
@@ -144,7 +145,7 @@ struct FirstLottieView: View {
             velocity.width *= -1 // X축 방향 반전
         }
         
-        if newPosition.y <= 75 || newPosition.y >= bounds.height - 75 {
+        if newPosition.y <= 75 || newPosition.y >= bounds.height - 150 {
             velocity.height *= -1 // Y축 방향 반전
         }
 
@@ -169,7 +170,7 @@ struct FirstLottieView: View {
 struct SecondLottieView: View {
     @State private var isDragging: Bool = false // 드래그 중인지 확인하는 상태
     @State private var accumlatedOffset: CGSize = .zero
-    @State private var position: CGPoint = CGPoint(x: 200, y: 700) // 시작 위치
+    @State private var position: CGPoint = CGPoint(x: 200, y: 200) // 시작 위치
     @State private var velocity: CGSize = CGSize(width: -0.5, height: 0.5) // 속도
     let timer = Timer.publish(every: 0.01, on: .main, in: .common).autoconnect() // 타이머
 
@@ -196,7 +197,7 @@ struct SecondLottieView: View {
             velocity.width *= -1 // X축 방향 반전
         }
         
-        if newPosition.y <= 75 || newPosition.y >= bounds.height - 75 {
+        if newPosition.y <= 75 || newPosition.y >= bounds.height - 150 {
             velocity.height *= -1 // Y축 방향 반전
         }
 
