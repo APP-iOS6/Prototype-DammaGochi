@@ -147,8 +147,3 @@ struct CareZoneView: View {
     }
 }
 
-//struct CareZoneView: View {
-//    var body: some View {
-//        Text("CareZone")
-//    }
-//}
