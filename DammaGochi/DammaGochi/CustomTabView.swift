@@ -12,24 +12,20 @@ struct CustomTabView: View {
     @Query private var pets: [Pet]
     var body: some View {
         TabView {
-            Tab("Home", systemImage: "tray.and.arrow.down.fill") {
+            Tab("Home", systemImage: "house.circle.fill") {
                 HomeView()
             }
             
-            Tab("Game", systemImage: "tray.and.arrow.up.fill") {
+            Tab("Game", systemImage: "gamecontroller.circle.fill") {
                 GameView()
             }
             
-            Tab("CareZone", systemImage: "person.crop.circle.fill") {
+            Tab("CareZone", systemImage: "pawprint.circle.fill") {
                 CareZoneView()
             }
-            
-            Tab("Store", systemImage: "person.crop.circle.fill") {
+
+            Tab("Store", systemImage: "storefront.circle.fill") {
                 StoreView()
-            }
-            
-            Tab("My", systemImage: "person.crop.circle.fill") {
-                MyView()
             }
         }
     }

@@ -17,27 +17,12 @@ struct MyView: View {
     var body: some View {
         NavigationStack {
             List {
-                Section("Profiles") {
-                    ProfileCardView(pets: examplePets, color: color)
-                        .listRowSeparator(.hidden)
-                }
-                
-                Section("Lab") {
-                    LabView(contents: exampleLabContents)
-                        .listRowSeparator(.hidden)
-                }
+                ProfileCardView(pets: examplePets, color: color)
+                    .listRowSeparator(.hidden)
             }
             .foregroundStyle(color)
             .listStyle(.plain)
-            .toolbar {
-                Button {
-                    // TODO: 설정화면
-                } label: {
-                    Image(systemName: "gearshape.fill")
-                }
-                .tint(color)
-            }
-            .navigationTitle("My")
+            .navigationTitle("Profile")
         }
     }
 }
