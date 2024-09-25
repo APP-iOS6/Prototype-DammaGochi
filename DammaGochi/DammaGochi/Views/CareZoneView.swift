@@ -106,6 +106,7 @@ struct CareZoneView: View {
                     .sheet(isPresented: $isFeedshow) {
                         FeedGridSheetView() // Sheet에 표시할 뷰
                     }
+                    .presentationDetents([.medium, .large])
                     Spacer()
                     
                     // 놀아주기
