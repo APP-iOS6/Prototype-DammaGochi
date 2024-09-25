@@ -10,34 +10,27 @@ import SwiftData
 
 struct CustomTabView: View {
     @Query private var pets: [Pet]
-    
     var body: some View {
-
-        
-        if pets.count > 0 {
-            TabView {
-                Tab("Home", systemImage: "tray.and.arrow.down.fill") {
-                    HomeView()
-                }
-                
-                Tab("Game", systemImage: "tray.and.arrow.up.fill") {
-                    GameView()
-                }
-                
-                Tab("CareZone", systemImage: "person.crop.circle.fill") {
-                    CareZoneView()
-                }
-                
-                Tab("Store", systemImage: "person.crop.circle.fill") {
-                    StoreView()
-                }
-                
-                Tab("My", systemImage: "person.crop.circle.fill") {
-                    MyView()
-                }
+        TabView {
+            Tab("Home", systemImage: "tray.and.arrow.down.fill") {
+                HomeView()
             }
-        } else {
-            PetCreateView()
+            
+            Tab("Game", systemImage: "tray.and.arrow.up.fill") {
+                GameView()
+            }
+            
+            Tab("CareZone", systemImage: "person.crop.circle.fill") {
+                CareZoneView()
+            }
+            
+            Tab("Store", systemImage: "person.crop.circle.fill") {
+                StoreView()
+            }
+            
+            Tab("My", systemImage: "person.crop.circle.fill") {
+                MyView()
+            }
         }
     }
 }

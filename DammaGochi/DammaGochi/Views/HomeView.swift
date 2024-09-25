@@ -17,7 +17,7 @@ struct HomeView: View {
     @State var isShowAddSheet: Bool = false
     
     var body: some View {
-        NavigationView {
+        NavigationStack{
             ZStack {
                 if isShowAR {
                     ARViewContainer(isShowAR: $isShowAR)
@@ -30,9 +30,9 @@ struct HomeView: View {
                 } else {
                     Image("livingroom")
                         .resizable()
-                        .scaledToFit()
+                        .aspectRatio(contentMode: .fill)
+                        .ignoresSafeArea()
                 }
-                
                 VStack{
                     HStack() {
                         NavigationLink(destination: PetCreateView()) {
@@ -106,7 +106,7 @@ struct FirstLottieView: View {
                 .offset(x: draggedOffset.width, y: draggedOffset.height)
                 .gesture(drag)
                 .edgesIgnoringSafeArea(.all)
-            }
+        }
     }
     
     var drag: some Gesture {
@@ -131,7 +131,7 @@ struct SecondLottieView: View {
                 .offset(x: draggedOffset.width, y: draggedOffset.height)
                 .gesture(drag)
                 .edgesIgnoringSafeArea(.all)
-            }
+        }
     }
     
     var drag: some Gesture {

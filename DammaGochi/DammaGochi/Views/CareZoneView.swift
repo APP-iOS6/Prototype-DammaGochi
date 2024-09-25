@@ -23,28 +23,28 @@ struct CareZoneView: View {
         ZStack {
             Image("PetHouse")
                 .resizable()
-                .scaledToFit()
+                .aspectRatio(contentMode: .fill)
+                .ignoresSafeArea()
             VStack {
                 Spacer()
-                HStack {
-                    Button {
-                        Picker("Pet", selection: $isFeedshow) {
-                            Text("Feed").tag(true)
-                            Text("Item").tag(false)
-                        }
-                    } label: {
-                        Image("cat")
-                            .resizable()
-                            .frame(width: 40, height: 40)
-                            .clipShape(Circle())
+                Button {
+                    Picker("Pet", selection: $isFeedshow) {
+                        Text("Feed").tag(true)
+                        Text("Item").tag(false)
                     }
-                    .padding()
-                    Spacer()
+                } label: {
+                    Image("cat")
+                        .resizable()
+                        .frame(width: 40, height: 40)
+                        .clipShape(Circle())
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.leading, 40)
+                HStack(alignment: .center){
                     Text("Kitty")
                         .foregroundStyle(.white)
                         .font(.title)
                         .bold()
-                        .padding()
                 }
                 Spacer()
                 
