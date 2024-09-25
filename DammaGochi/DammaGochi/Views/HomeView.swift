@@ -15,6 +15,8 @@ struct HomeView: View {
     @State private var isShowAR: Bool = false
     @State var addedAnimal: Bool = false
     @State var isShowAddSheet: Bool = false
+    @State var scale: CGFloat = 1.0
+    @State var isAnimate: Bool = true
     
     var body: some View {
         NavigationStack{
@@ -33,25 +35,38 @@ struct HomeView: View {
                         .aspectRatio(contentMode: .fill)
                         .ignoresSafeArea()
                 }
+                
                 VStack{
-                    HStack() {
+                    HStack {
                         NavigationLink(destination: PetCreateView()) {
-                            Image(systemName: "plus.circle")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 50, height: 50)
-                                .foregroundColor(.white)
-                                .background(Color.brown)
-                                .clipShape(Circle()) // 이미지를 원형 버튼으로 만들기
-                                .shadow(radius: 5)
+                            ZStack {
+                                Circle()
+                                    .frame(width: 50, height: 50)
+                                    .scaleEffect(scale)
+                                    .foregroundStyle(Color(.systemGray3))
+                                    .animation(isAnimate ? .easeInOut(duration: 0.5).repeatForever(autoreverses: true) : .default, value: scale)
+                                
+                                Image(systemName: "plus.circle")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 50, height: 50)
+                                    .foregroundColor(.white)
+                                    .background(Color.brown)
+                                    .clipShape(Circle()) // 이미지를 원형 버튼으로 만들기
+                                    .shadow(radius: 5)
+                            }
+                            .disabled(pets.count >= 2)
+                            .padding(.leading, 20)
+                            .padding(.top, 40)
                         }
-                        .disabled(pets.count >= 2)
-                        .padding(.leading, 20)
-                        .padding(.top, 40)
-                        
+                        .onAppear {
+                            isAnimate = pets.count == 0 ? true : false
+                            scale = isAnimate ? 1.2 : 1.0
+                        }
                         Spacer()
                     }
                     Spacer()
+                    
                     HStack(){
                         Button {
                             isShowAR.toggle()
