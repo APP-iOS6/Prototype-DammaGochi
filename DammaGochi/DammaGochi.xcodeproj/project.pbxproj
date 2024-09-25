@@ -33,9 +33,22 @@
 		8BD2C4BA2CA23B9D0029F6F8 /* DammaGochiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DammaGochiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		2CF119AE2CA40BA1008B8F0C /* Exceptions for "DammaGochi" folder in "DammaGochi" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 8BD2C49D2CA23B9B0029F6F8 /* DammaGochi */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		8BD2C4A02CA23B9B0029F6F8 /* DammaGochi */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				2CF119AE2CA40BA1008B8F0C /* Exceptions for "DammaGochi" folder in "DammaGochi" target */,
+			);
 			path = DammaGochi;
 			sourceTree = "<group>";
 		};
@@ -413,9 +426,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DammaGochi/Preview Content\"";
-				DEVELOPMENT_TEAM = CWRPBX9CLY;
+				DEVELOPMENT_TEAM = 6R3M7VGRP2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DammaGochi/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = DammaGochi;
 				INFOPLIST_KEY_NSCameraUsageDescription = "AR 화면을 위해 카메라를 사용합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -428,7 +442,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = education.techit.DammaGochi;
+				PRODUCT_BUNDLE_IDENTIFIER = net.likelion.DammaGochi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -444,9 +458,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DammaGochi/Preview Content\"";
-				DEVELOPMENT_TEAM = CWRPBX9CLY;
+				DEVELOPMENT_TEAM = 6R3M7VGRP2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DammaGochi/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = DammaGochi;
 				INFOPLIST_KEY_NSCameraUsageDescription = "AR 화면을 위해 카메라를 사용합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -459,7 +474,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = education.techit.DammaGochi;
+				PRODUCT_BUNDLE_IDENTIFIER = net.likelion.DammaGochi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
