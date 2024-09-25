@@ -147,3 +147,7 @@ struct CareZoneView: View {
     }
 }
 
+#Preview {
+    CareZoneView()
+}
+
