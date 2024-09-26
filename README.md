@@ -34,7 +34,8 @@
 - 밥을 주고, 잘 놀아주면, 반려동물의 에너지와 충성도가 상승합니다 ! 예쁘게 꾸며주기도 하세요.<br/>
 - 프로필을 눌러 다른 반려동물로 전환해보세요!<br/>
 
-<img src="https://github.com/user-attachments/assets/b5a177ea-04c9-412b-a99b-e85f2353a81f" width="200" height="400"/>  
+
+<img src="https://github.com/user-attachments/assets/77f66aa7-9d73-4b47-99e0-48543a3dc0b6" width="200" height="400"/>   
 <img src="https://github.com/user-attachments/assets/ba10d8fb-c5ce-4564-90ff-c00a3ec23565" width="200" height="400"/>
 <br/>
 
