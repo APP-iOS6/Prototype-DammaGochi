@@ -19,6 +19,14 @@ struct GameView: View {
     var body: some View {
         NavigationStack{
             VStack{
+                HStack{
+                    Image("coin")
+                        .resizable()
+                        .frame(width: 35, height: 35)
+                    Text("\(coinManager.coin)")
+                        .font(.title2)
+                        .fontWeight(.heavy)
+                }
                 ScrollView{
                     LazyVGrid(columns: gridItem) {
                         ForEach(gameImageName.indices, id: \.self) { index in
@@ -31,13 +39,19 @@ struct GameView: View {
                                         VStack{
                                             HStack{
                                                 Spacer()
-                                                Image("coin")
-                                                    .resizable()
-                                                    .frame(width: 15, height: 15)
-                                                Text("10")
-                                                    .foregroundStyle(.black)
-                                                    .font(.body)
-                                                    .fontWeight(.bold)
+                                                Group{
+                                                    HStack{
+                                                        Image("coin")
+                                                            .resizable()
+                                                            .frame(width: 15, height: 15)
+                                                        Text("10")
+                                                            .foregroundStyle(.black)
+                                                            .font(.body)
+                                                            .fontWeight(.bold)
+                                                    }
+                                                    .padding(.horizontal,5)
+                                                    .background(RoundedRectangle(cornerRadius: 8).fill(.white))
+                                                }
                                             }
                                             .padding(5)
                                             Text(gameName[index])
@@ -71,13 +85,8 @@ struct GameView: View {
                 .navigationBarTitleDisplayMode(.inline)
                 .padding(.horizontal,10)
                 .toolbar{
-                    ToolbarItem(placement: .topBarTrailing){
-                        HStack{
-                            Image("coin")
-                                .resizable()
-                                .frame(width: 25, height: 25)
-                            Text("\(coinManager.coin)")
-                        }
+                    ToolbarItem(placement: .navigation){
+                       
                     }
                 }
             }
