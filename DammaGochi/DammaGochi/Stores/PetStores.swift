@@ -7,13 +7,14 @@
 
 import SwiftUI
 
-struct PetStores {
+@Observable
+class PetStores {
     let pets: [Pet]
     
     init () {
         pets = [
-            Pet(name: "Dog", age: 2, gender: "Female", personality: "귀여운 외모에 그렇지 못한 성격", imageStr: "dog"),
-            Pet(name: "Cat", age: 5, gender: "Male", personality: "귀여운 외모에 그렇지 못한 성격", imageStr: "cat"),
+            Pet(name: "Yaong", age: 2, gender: "Female", personality: "귀여운 외모에 그렇지 못한 성격", imageStr: "dog"),
+            Pet(name: "Kitty", age: 5, gender: "Male", personality: "귀여운 외모에 그렇지 못한 성격", imageStr: "cat"),
         ]
     }
 }

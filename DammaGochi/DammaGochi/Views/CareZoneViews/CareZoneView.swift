@@ -9,6 +9,7 @@ import SwiftUI
 import Lottie
 
 struct CareZoneView: View {
+    var pets: [Pet] = PetStores().pets
     @State private var energyProgress: Double = 0.0
     @State private var loyaltyProgress: Double = 0.0
     @State private var fullProgress: Double = 0.0
@@ -29,7 +30,7 @@ struct CareZoneView: View {
                 VStack {
                     Spacer()
                     HStack(alignment: .center){
-                        Text("Kitty")
+                        Text("\(pets[0].name)")
                             .foregroundStyle(.white)
                             .font(.title)
                             .bold()
