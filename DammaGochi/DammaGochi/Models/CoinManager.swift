@@ -24,3 +24,13 @@ class CoinManager: ObservableObject{
             }
         }
 }
+
+class PetManager: ObservableObject {
+    var examplePets: [Pet] = [Pet(name: "Kitty", age: 5, gender: "♀", personality: "매우 귀엽게 생긴 외모에 그렇지 못한 성격입니다...!", imageStr: "cat"), Pet(name: "Yaong", age: 2, gender: "♂", personality: "고양이인척 하는 토끼입니다...!", imageStr: "blue")]
+    
+    @Published var selectedPet: Pet
+    
+    init() {
+        self.selectedPet = examplePets.first!
+    }
+}
