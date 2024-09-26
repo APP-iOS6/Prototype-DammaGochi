@@ -40,7 +40,7 @@ struct CareZoneViewLast: View {
                     Spacer()
                     
                     // Lottie
-                    LottieView(filename: isFirstAnimation ? "animationOne" : "animationTwo")
+                    LottieView(animationName: isFirstAnimation ? "animationOne" : "animationTwo")
                                         .frame(width: 300, height: 300)
                         .onDisappear {
                             // 뷰가 사라질 때 실행할 작업
