@@ -159,6 +159,9 @@ struct CareZoneView: View {
                                 .resizable()
                                 .frame(width: 30, height: 30)
                             Text("\(coinManager.coin)")
+                                .font(.caption)
+                                .foregroundStyle(.white)
+                                .bold()
                         }
                     }
                 }
