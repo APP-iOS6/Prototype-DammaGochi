@@ -19,38 +19,35 @@
 <br/><br/>
 
 # 🥚 동작화면
-### Home                      홈 내부 - 생성하기 버튼
+### Home                      
 - 내가 원하는 생김새의 반려동물을 입양할 수 있습니다 !<br/>
 - AR 기능으로, 내 공간에 반려동물과 함께 있는 것처럼 느낄 수 있어요!<br/>
 
-<img src="https://github.com/user-attachments/assets/f96fa888-41d8-4559-bd89-7088d48888e5" width="200" height="400"/> 
-<img src="https://github.com/user-attachments/assets/49bb6ef5-2d82-4ae5-8772-ed4b233f26b5" width="200" height="400"/>
-    
-<img src="https://github.com/user-attachments/assets/3a87f63c-89c8-4c9f-8793-65e518817854" width="200" height="400"/> 
-<img src="https://github.com/user-attachments/assets/419411f3-17ee-4de1-b7b5-0192ddc833b2" width="200" height="400"/>
-<br/>
+<img src="https://github.com/user-attachments/assets/3e99b2c1-a178-4c3f-9a10-ee862734dedf" width="200" height="400"/>    
+<img src="https://github.com/user-attachments/assets/46f49a34-4ca6-41c1-a3f5-ef4a3af12d17" width="200" height="400"/>    
+<img src="https://github.com/user-attachments/assets/740ed3e4-a6b2-48b2-8c9f-ab617f7cbaeb" width="200" height="400"/>    
+
 
 ### CareZone
 - 밥을 주고, 잘 놀아주면, 반려동물의 에너지와 충성도가 상승합니다 ! 예쁘게 꾸며주기도 하세요.<br/>
 - 프로필을 눌러 다른 반려동물로 전환해보세요!<br/>
 
-
-<img src="https://github.com/user-attachments/assets/77f66aa7-9d73-4b47-99e0-48543a3dc0b6" width="200" height="400"/>   
-<img src="https://github.com/user-attachments/assets/ba10d8fb-c5ce-4564-90ff-c00a3ec23565" width="200" height="400"/>
+<img src="https://github.com/user-attachments/assets/59e821fa-7eea-4917-aae1-d895b94dc56f" width="200" height="400"/>   
+<img src="https://github.com/user-attachments/assets/1a23c6d2-be99-4dfa-8442-86c170da0b16" width="200" height="400"/>   
 <br/>
 
 ### Game
 - 10코인을 써서 반려동물의 친구도 만들어 주고, 산책도 시켜주세요!<br/>
 - 게임 후에는 코인이 몇 배나 불어나 있을 거에요.<br/>
-
-<img src="https://github.com/user-attachments/assets/1cc9a68c-634f-4a46-93ef-3f8f8a42bbeb" width="200" height="400"/>
+<img src="https://github.com/user-attachments/assets/5584ed39-a8d1-4f79-b841-f48805ec84a8" width="200" height="400"/>
 <br/>
 
 ### Store
 - 내 반려동물에게 어울리는 옷, 필요한 밥이나 간식 등 여러 아이템을 쇼핑해 보세요!<br/>
 - 앗! 코인이 부족하다구요? 반려동물과 놀아주고 게임해주면 더 많은 코인을 얻을 수 있어요.<br/>
 
-<img src="https://github.com/user-attachments/assets/79e39d13-2553-48ca-9af0-688a8603717e" width="200" height="400"/>
+<img src="https://github.com/user-attachments/assets/6570a93d-ffe0-45d7-86f1-fce1ca0cd4a6" width="200" height="400"/>
+
 <br/>
 
 # 🥚 피드백 ✔️
