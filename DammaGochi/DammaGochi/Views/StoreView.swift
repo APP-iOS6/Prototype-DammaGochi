@@ -31,6 +31,7 @@ struct StoreView: View {
     ]
     
     @EnvironmentObject var coinManager: CoinManager
+    @Environment(\.colorScheme) var colorScheme
     @State private var showAlert: Bool = false
     @State private var selectedProduct: Product?
     @State private var ownedProducts: [UUID] = []   //구매된 상품 ID로 저장하기 위함
@@ -45,7 +46,7 @@ struct StoreView: View {
     }
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 ScrollView(.horizontal, showsIndicators:  false) {
                     HStack {
@@ -81,7 +82,7 @@ struct StoreView: View {
                                     
                                     HStack {
                                         Text("\(product.price) x \(addItem[product.id] ?? 1) = \(product.price * (addItem[product.id] ?? 1))")
-                                            .foregroundColor(.black)
+                                            .foregroundColor(colorScheme == .dark ? .white : .black)
                                             .font(.headline)
                                         Image("coin")
                                             .resizable()
@@ -116,9 +117,9 @@ struct StoreView: View {
                                         showAlert = true
                                     })  {
                                         Text("구매하기")
-                                            .font(.caption)
+                                            .font(.headline)
                                             .padding(5)
-                                            .background(Color.purple)
+                                            .background(Color.blue)
                                             .foregroundColor(.white)
                                             .cornerRadius(5)
                                     }
@@ -130,8 +131,12 @@ struct StoreView: View {
                                 .cornerRadius(10)
                                 
                                 if ownedProducts.contains(product.id) {
-                                    Image(systemName: "checkmark.seal.fill")
-                                        .foregroundColor(.green)
+                                    Text("보유중")
+                                        .font(.caption)
+                                        .foregroundColor(.white)
+                                        .padding(.horizontal, 8)
+                                        .background(Color.green)
+                                        .cornerRadius(8)
                                         .padding([.top, .trailing], 8)  // 우측 상단에 배치
                                 }
                             }
@@ -155,17 +160,17 @@ struct StoreView: View {
             }
             .alert(isPresented: $showAlert) {
                 if let product = selectedProduct {
-                                    let quantity = addItem[product.id] ?? 1
-                                    let totalPrice = product.price * quantity
-                                    if coinManager.coin >= totalPrice {
-                                        return Alert(
-                                            title: Text("구매 확인"),
-                                            message: Text("\(totalPrice) 코인을 사용하여 \(quantity)개를 구매하시겠습니까?"),
-                                            primaryButton: .default(Text("확인"), action: {
-                                                purchaseProduct(product: product, quantity: quantity)
-                                            }),
-                                            secondaryButton: .cancel(Text("취소"))
-                                        )
+                    let quantity = addItem[product.id] ?? 1
+                    let totalPrice = product.price * quantity
+                    if coinManager.coin >= totalPrice {
+                        return Alert(
+                            title: Text("아이템 구매"),
+                            message: Text("\(totalPrice) 코인을 사용하여 \(quantity)개를 구매하시겠습니까?"),
+                            primaryButton: .default(Text("구매").bold(), action: {
+                                purchaseProduct(product: product, quantity: quantity)
+                            }),
+                            secondaryButton: .cancel(Text("취소"))
+                        )
                     } else {
                         return Alert(
                             title: Text("코인이 부족합니다"),
@@ -185,12 +190,12 @@ struct StoreView: View {
         }
     }
     private func purchaseProduct(product: Product, quantity: Int) {
-            let totalPrice = product.price * quantity // 총 가격 계산
-            coinManager.storeCoin(price: totalPrice) // 총 가격만큼 코인 차감
-            ownedProducts.append(product.id)
-            addItem[product.id] = 1
-            print("구매성공! 남은코인: \(coinManager.coin)")
-        }
+        let totalPrice = product.price * quantity // 총 가격 계산
+        coinManager.storeCoin(price: totalPrice) // 총 가격만큼 코인 차감
+        ownedProducts.append(product.id)
+        addItem[product.id] = 1
+        print("구매성공! 남은코인: \(coinManager.coin)")
+    }
 }
 
 struct StoreView_Previews: PreviewProvider {
