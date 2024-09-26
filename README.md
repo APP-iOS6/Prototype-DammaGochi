@@ -87,7 +87,7 @@
 |이름|역할|Git Hub|
 |------|---|---|
 |**홍지수**| PM & CareZone 탭 |[jisooohh](https://github.com/jisooohh)|
-|**강희창**| Store 탭 & 리팩토링 ||
+|**강희창**| Store 탭 & 리팩토링 | [seungho](https://github.com/sts06017) |
 |**김수은**| Game 탭 & 리팩토링 ||
 |**이소영**| My 탭 & 리팩토링 ||
 |**최승호**| Home 탭 & 시작 전 화면 ||
