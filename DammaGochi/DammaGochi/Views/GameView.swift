@@ -19,14 +19,7 @@ struct GameView: View {
     var body: some View {
         NavigationStack{
             VStack{
-                HStack{
-                    Image("coin")
-                        .resizable()
-                        .frame(width: 35, height: 35)
-                    Text("\(coinManager.coin)")
-                        .font(.title2)
-                        .fontWeight(.heavy)
-                }
+                
                 ScrollView{
                     LazyVGrid(columns: gridItem) {
                         ForEach(gameImageName.indices, id: \.self) { index in
@@ -85,8 +78,15 @@ struct GameView: View {
                 .navigationBarTitleDisplayMode(.inline)
                 .padding(.horizontal,10)
                 .toolbar{
-                    ToolbarItem(placement: .navigation){
-                       
+                    ToolbarItem(placement: .topBarTrailing){
+                        HStack{
+                            Image("coin")
+                                .resizable()
+                                .frame(width: 35, height: 35)
+                            Text("\(coinManager.coin)")
+                                .font(.title2)
+                                .fontWeight(.heavy)
+                        }
                     }
                 }
             }
