@@ -68,10 +68,8 @@ struct HomeView: View {
                         }
                         Spacer()
                     }
-                    Spacer()
                     
                     HStack(){
-                        Spacer()
 
                         Button {
                             isShowAR.toggle()
@@ -87,6 +85,8 @@ struct HomeView: View {
                         }
                         Spacer()
                     }
+                    .padding(.vertical)
+                    Spacer()
                 }
                 .padding(30)
                 
