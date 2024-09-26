@@ -19,8 +19,12 @@ class CoinManager: ObservableObject{
     }
     
     func storeCoin(price: Int) {
-            if coin >= price {
-                coin -= price
-            }
+        if coin >= price {
+            coin -= price
         }
+    }
+    
+    func addcoin() {
+        self.coin += 1
+    }
 }

@@ -10,8 +10,9 @@ import SwiftUI
 
 
 struct ItemGridSheetView: View {
-    @State var tops: [Item] = ItemStores().tops
-    @State var caps: [Item] = ItemStores().caps
+    var itemStores = ItemStores()
+//    @State var tops: [Item] = ItemStores().tops
+//    @State var caps: [Item] = ItemStores().caps
     // 그리드 레이아웃: 각 행에 2개의 아이템을 표시하는 레이아웃 설정
     let columns = [
         GridItem(.flexible()),
@@ -22,8 +23,8 @@ struct ItemGridSheetView: View {
     var body: some View {
         ScrollView {
             VStack {
-//                GridSheetSubView(items: tops, name: "상의")
-//                GridSheetSubView(items: caps, name: "모자")
+                GridSheetSubView(itemStore: itemStores, name: "상의")
+                GridSheetSubView(itemStore: itemStores, name: "모자")
             }
             .padding()
         }

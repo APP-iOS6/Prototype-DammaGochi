@@ -124,7 +124,7 @@ struct FirstLottieView: View {
     
     var body: some View {
         VStack {
-            LottieView(filename: "animationOne")
+            LottieView(animationName: "animationOne")
                 .frame(width: 150, height: 150)
                 .position(position)
                 .gesture(drag)
@@ -176,7 +176,7 @@ struct SecondLottieView: View {
 
     var body: some View {
         VStack {
-            LottieView(filename: "animationFile2")
+            LottieView(animationName: "animationFile2")
                 .frame(width: 300, height: 300)
                 .position(position)
                 .gesture(drag)

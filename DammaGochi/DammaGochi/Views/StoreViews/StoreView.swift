@@ -7,61 +7,53 @@
 
 import SwiftUI
 
-struct Product: Identifiable {
-    let id = UUID()
-    let name: String
-    let price: Int
-    let imageName: String
-    let category: String
-}
 
 struct StoreView: View {
-    
-    let categories = ["전체", "간식", "장난감", "의류", "기타용품"]
-    @State private var selected = "전체"
+    var products: [Item] = ItemStores().products
+    let categories: [category] = [.all, .feed, .toy, .cloth, .other]
+    @State private var selected: category = .all
     
     //    let products = Array(repeating: "상품", count: 10)
-    let products = [
-        Product(name: "1등급 댕댕이 펫밀크", price: 10, imageName: "petMilk", category: "간식"),
-        Product(name: "1등급 냥냥이 츄르", price: 10, imageName: "Chur", category: "간식"),
-        Product(name: "냥냥이 낚시", price: 50, imageName: "catFish", category: "장난감"),
-        Product(name: "댕댕이 공놀이", price: 50, imageName: "dogBall", category: "장난감"),
-        Product(name: "레드 스트라이프 티셔츠", price: 150, imageName: "red", category: "의류"),
-        Product(name: "블루 스트라이프 티셔츠", price: 150, imageName: "blue", category: "의류"),
-    ]
+    //let products = itemStore.products
     
     @EnvironmentObject var coinManager: CoinManager
     @State private var showAlert: Bool = false
-    @State private var selectedProduct: Product?
+    @State private var selectedProduct: Item?
     @State private var ownedProducts: [UUID] = []   //구매된 상품 ID로 저장하기 위함
     @State private var addItem: [UUID: Int] = [:]
     
-    private var filteredProducts: [Product] {
-        if selected == "전체" {
+    private var filteredProducts: [Item] {
+        if selected == .all {
             return products // "전체"가 선택되면 모든 상품을 반환
         } else {
             return products.filter { $0.category == selected } // 선택된 카테고리에 맞는 상품만 반환
         }
     }
     
+    private func backgroundColor(for category: category) -> Color {
+        return selected == category ? Color.gray : Color(UIColor.systemGray6)
+    }
+    
     var body: some View {
         NavigationView {
             VStack {
+                // 카테고리 바
                 ScrollView(.horizontal, showsIndicators:  false) {
                     HStack {
                         ForEach(categories, id: \.self) { category in
                             Button(action: {
                                 selected = category
                             }) {
-                                Text(category)
+                                Text(category.rawValue)
                                     .padding()
-                                    .background(selected == category ? Color.gray : Color(UIColor.systemGray6))
+                                    .background(backgroundColor(for: category))
                                     .cornerRadius(20)
                             }
                         }
                     }
                     .padding()
                 }
+                
                 ScrollView {
                     LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
                         ForEach(filteredProducts, id: \.id) { product in
@@ -184,7 +176,7 @@ struct StoreView: View {
             }
         }
     }
-    private func purchaseProduct(product: Product, quantity: Int) {
+    private func purchaseProduct(product: Item, quantity: Int) {
             let totalPrice = product.price * quantity // 총 가격 계산
             coinManager.storeCoin(price: totalPrice) // 총 가격만큼 코인 차감
             ownedProducts.append(product.id)

@@ -11,12 +11,13 @@ import Lottie
 struct CareZoneView: View {
     @State private var energyProgress: Double = 0.0
     @State private var loyaltyProgress: Double = 0.0
+    @State private var fullProgress: Double = 0.0
     
     @State private var isFeedshow = false
     @State private var isItemshow = false
     
-    @State private var currentAnimation = "animationOne" // 기본 애니메이션 파일명
-    @State private var isPlayingSecondary = false // 현재 두 번째 애니메이션 재생 중인지 여부
+    @State private var isFirstAnimation = true
+    @EnvironmentObject var coinManager: CoinManager
     
     
     var body: some View {
@@ -32,57 +33,46 @@ struct CareZoneView: View {
                             .foregroundStyle(.white)
                             .font(.title)
                             .bold()
+                            .padding(50)
                     }
                     
                     Spacer()
                     
                     // Lottie
-                    LottieView(filename: currentAnimation,
-                               loopMode: .loop,
-                               playOnce: isPlayingSecondary,
-                               onAnimationComplete: {
-                        // 애니메이션 재생 완료 시 첫 번째 애니메이션으로 돌아가기
-                        currentAnimation = "animationOne"
-                        isPlayingSecondary = false
-                    })
-                    .frame(width: 300, height: 300)
-                    .onTapGesture {
-                        if !isPlayingSecondary {
-                            // 두 번째 애니메이션을 한 번 재생
-                            isPlayingSecondary = true
-                            currentAnimation = "animationTwo"
+                    LottieView(animationName: isFirstAnimation ? "animationOne" : "animationTwo")
+                                        .frame(width: 300, height: 300)
+                        .onDisappear {
+                            // 뷰가 사라질 때 실행할 작업
+                            isFirstAnimation = false
+                            print("The view has disappeared!")
                         }
-                    }
-                    
-                    // 에너지
+
+                    Spacer()
+                    // 게이지 - 에너지
                     HStack {
-                        Image(systemName: "heart.fill")
-                            .foregroundStyle(Color.red)
-                        ProgressView("Energy", value: energyProgress, total: 1.0)
-                            .font(.footnote)
-                            .bold()
-                            .foregroundStyle(.white)
-                            .progressViewStyle(LinearProgressViewStyle(tint: .red))
-                            .frame(height: 20) // 높이 조절
-                            .cornerRadius(5) // 모서리 둥글게
-                            .padding()
+                        VStack {
+                            WaterProgressView(title: "에너지", progress: $energyProgress, color: .red)
+                            Image(systemName: "flame.fill")
+                                .foregroundStyle(Color.red)
+                        }
+                        .frame(width: 100)
+                        
+                        // 사랑
+                        VStack {
+                            WaterProgressView(title: "사랑", progress: $loyaltyProgress, color: .pink)
+                            Image(systemName: "heart.fill")
+                                .foregroundStyle(Color.yellow)
+                        }
+                        .frame(width: 100)
+                        
+                        // 충만함
+                        VStack {
+                            WaterProgressView(title: "충만함", progress: $fullProgress, color: .orange)
+                            Image(systemName: "carrot.fill")
+                                .foregroundStyle(Color.red)
+                        }
+                        .frame(width: 100)
                     }
-                    .frame(width: 300)
-                    
-                    // 충성도
-                    HStack {
-                        Image(systemName: "star.fill")
-                            .foregroundStyle(Color.yellow)
-                        ProgressView("Loyalty", value: loyaltyProgress, total: 1.0)
-                            .font(.footnote)
-                            .bold()
-                            .foregroundStyle(.white)
-                            .progressViewStyle(LinearProgressViewStyle(tint: .yellow))
-//                            .frame(height: 20) // 높이 조절
-//                            .cornerRadius(5) // 모서리 둥글게
-                            .padding()
-                    }
-                    .frame(width: 300)
                     Spacer()
                     
                     // 인터랙션
@@ -93,14 +83,14 @@ struct CareZoneView: View {
                         Button {
                             isFeedshow.toggle()
                         } label: {
-                            Image(systemName: "fork.knife.circle")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 50, height: 50)
-                                .foregroundColor(.white)
-                                .background(Color.brown)
-                                .clipShape(Circle()) // 이미지를 원형 버튼으로 만들기
-                                .shadow(radius: 5)
+                            Image(systemName: "fork.knife")
+                                .padding(.vertical, 15)
+                                .padding(.horizontal,45)
+                                .foregroundStyle(.white)
+                                .background(.brown.gradient)
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                                .padding(.bottom, 10)
+
                         }
                         .sheet(isPresented: $isFeedshow) {
                             FeedGridSheetView() // Sheet에 표시할 뷰
@@ -110,38 +100,44 @@ struct CareZoneView: View {
                         
                         // 놀아주기
                         Button {
-                            loyaltyProgress += 0.05
+                            withAnimation(.easeInOut) {
+                                if loyaltyProgress < 1.0 {
+                                    loyaltyProgress += 0.05
+                                } else {
+                                    loyaltyProgress = 0
+//                                    coinManager.addCoin()
+                                }
+                            }
+                            isFirstAnimation.toggle()
                         } label: {
-                            Image(systemName: "play.circle")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 50, height: 50)
-                                .foregroundColor(.white)
-                                .background(Color.brown)
-                                .clipShape(Circle()) // 이미지를 원형 버튼으로 만들기
-                                .shadow(radius: 5)
+                            Image(systemName: "gamecontroller.fill")
+                                .padding(.vertical, 15)
+                                .padding(.horizontal,45)
+                                .foregroundStyle(.white)
+                                .background(.brown.gradient)
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                                .padding(.bottom, 10)
                         }
                         Spacer()
+                        
                         
                         // 꾸미기
                         Button {
                             isItemshow.toggle()
                         } label: {
                             Image(systemName: "hanger")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 50, height: 50)
-                                .foregroundColor(.white)
-                                .background(Color.brown)
-                                .clipShape(Circle()) // 이미지를 원형 버튼으로 만들기
-                                .shadow(radius: 5)
+                                .padding(.vertical, 15)
+                                .padding(.horizontal,45)
+                                .foregroundStyle(.white)
+                                .background(.brown.gradient)
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                                .padding(.bottom, 10)
                         }
                         .sheet(isPresented: $isItemshow) {
                             ItemGridSheetView() // Sheet에 표시할 뷰
                         }
                         Spacer()
                     }
-                    Spacer()
                 }
             }
             .ignoresSafeArea(edges: .top)
@@ -156,6 +152,17 @@ struct CareZoneView: View {
                             .tint(.white)
                     }
                 }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    HStack {
+                        HStack{
+                            Image("coin")
+                                .resizable()
+                                .frame(width: 30, height: 30)
+                            Text("\(coinManager.coin)")
+                        }
+                    }
+                }
+                
                 ToolbarItem(placement: .navigationBarLeading) {
                     NavigationLink(destination: MyView()) {
                         Image("cat")

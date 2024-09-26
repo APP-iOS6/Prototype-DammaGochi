@@ -35,6 +35,7 @@ struct GridSheetSubView: View {
                 
                 Button(action: {
                     // 버튼 클릭 시 동작
+                    //item.itemNum -= 1
                 }) {
                     ZStack {
                         RoundedRectangle(cornerRadius: 10)
@@ -46,7 +47,6 @@ struct GridSheetSubView: View {
                                 .font(.subheadline)
                                 .bold()
                                 .foregroundStyle(.brown)
-                            //                                .padding()
                             Image(item.imageName)
                                 .resizable()
                                 .frame(width: 50, height: 50)
@@ -62,7 +62,3 @@ struct GridSheetSubView: View {
         }
     }
 }
-    
-    //#Preview {
-    //    FeedGridSheetSubView(items: <#T##[Item]#>, name: "")
-    //}

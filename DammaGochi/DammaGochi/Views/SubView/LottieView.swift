@@ -1,50 +1,55 @@
-//
-//  LottieView.swift
-//  DammaGochi
-//
-//  Created by 홍지수 on 9/24/24.
-//
-
 import SwiftUI
 import Lottie
 
-// Lottie 애니메이션을 표시하는 커스텀 뷰
+// LottieView: UIViewRepresentable을 사용해 Lottie 애니메이션을 SwiftUI에서 사용 가능하도록 래핑
 struct LottieView: UIViewRepresentable {
-    var filename: String
+    var animationName: String
     var loopMode: LottieLoopMode = .loop
-    var playOnce: Bool = false
-    var onAnimationComplete: (() -> Void)?
+
+    // Coordinator를 사용하여 animationView를 관리
+    func makeCoordinator() -> Coordinator {
+        Coordinator()
+    }
 
     func makeUIView(context: Context) -> UIView {
         let view = UIView(frame: .zero)
-        
-        let animationView = LottieAnimationView(name: filename)
+
+        // LottieAnimationView 초기화 및 설정
+        let animationView = LottieAnimationView(name: animationName)
         animationView.contentMode = .scaleAspectFit
-        
-        if playOnce {
-            animationView.loopMode = .playOnce
-            animationView.play { finished in
-                if finished {
-                    onAnimationComplete?() // 애니메이션 종료 시 콜백 호출
-                }
-            }
-        } else {
-            animationView.loopMode = loopMode
-            animationView.play()
-        }
-        
-        animationView.translatesAutoresizingMaskIntoConstraints = false
+        animationView.loopMode = loopMode
+        animationView.play()
+
+        // animationView를 Coordinator에 저장
+        context.coordinator.animationView = animationView
+
+        // animationView를 UIView에 추가
         view.addSubview(animationView)
-        
+
+        // AutoLayout 설정
+        animationView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             animationView.widthAnchor.constraint(equalTo: view.widthAnchor),
-            animationView.heightAnchor.constraint(equalTo: view.heightAnchor)
+            animationView.heightAnchor.constraint(equalTo: view.heightAnchor),
+            animationView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            animationView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
-        
+
         return view
     }
 
     func updateUIView(_ uiView: UIView, context: Context) {
-        // 뷰가 업데이트될 때의 작업을 정의할 수 있습니다.
+        // animationName이 변경되었을 때 animationView 업데이트
+        if let animationView = context.coordinator.animationView {
+            animationView.stop()
+            animationView.animation = LottieAnimation.named(animationName)
+            animationView.loopMode = loopMode
+            animationView.play()
+        }
+    }
+
+    // Coordinator 클래스 정의
+    class Coordinator {
+        var animationView: LottieAnimationView?
     }
 }
