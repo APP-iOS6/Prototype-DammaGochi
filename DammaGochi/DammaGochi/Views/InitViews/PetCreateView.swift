@@ -28,57 +28,60 @@ struct PetCreateView: View {
     // -----------------------------------------------
     
     var body: some View {
-        VStack(alignment: .leading) {            
-            // 첫 번째 텍스트: "당신만의 펫을 만들어보세요."
-            Text("당신만의 펫을 만들어보세요.")
-                .font(.title)
-                .opacity(showTitle ? 1 : 0) // 처음에는 숨기고, 애니메이션으로 나타남
-                .animation(.easeIn(duration: 1), value: showTitle) // 애니메이션 적용
-            
-            Spacer()
-            
-            // 두 번째 텍스트: "어떤 펫을 만들고 싶으신가요?"
-            AnimalTypeQuestionView(showAnimalTypeQuestion: $showAnimalTypeQuestion, selectedAnimalType: $selectedAnimalType, checkAllFields: checkAllFields)
-            
-            Spacer()
-            
-            // 세 번째 텍스트: "이 펫의 종은 무엇인가요?"
-            AnimalBreedQuestionView(showBreedQuestion: $showBreedQuestion, selectedBreed: $selectedBreed, checkAllFields: checkAllFields)
-            Spacer()
-            
-            // 네 번째 텍스트: "이 펫의 털은 무슨 색인가요?"
-            AnimalColorQuestionView(showColorQuestion: $showColorQuestion, selectedColor: $selectedColor, checkAllFields: checkAllFields)
-            Spacer()
-            
-            // 다섯 번째: 성별 선택
-            animalGenderQuestionView(showGenderPicker: $showGenderPicker, selectedGender: $selectedGender, checkAllFields: checkAllFields)
-            
-            Spacer()
-            
-            HStack {
+        ScrollView {
+            VStack(alignment: .leading) {
+                // 첫 번째 텍스트: "당신만의 펫을 만들어보세요."
+                Text("당신만의 펫을 만들어보세요.")
+                    .font(.title)
+                    .opacity(showTitle ? 1 : 0) // 처음에는 숨기고, 애니메이션으로 나타남
+                    .animation(.easeIn(duration: 1), value: showTitle) // 애니메이션 적용
                 Spacer()
-                Button(action: {
-                    showTabView = true
-                    let newPet = Pet(name: "고양", age: 2, gender: "♂", personality: "고양이인척 하는 토끼입니다...!", imageStr: "https://emojigraph.org/media/apple/rabbit-face_1f430.png")
-                    modelContext.insert(newPet)
-                }) {
-                    Text("생성하기")
-                }
-                .opacity(showCreateButton ? 1 : 0)
-                .animation(.easeIn(duration: 1), value: showCreateButton)
-                .fullScreenCover(isPresented: $showTabView) {
-                    CustomTabView()
+                    .frame(height: 50)
+                
+                // 두 번째 텍스트: "어떤 펫을 만들고 싶으신가요?"
+                AnimalTypeQuestionView(showAnimalTypeQuestion: $showAnimalTypeQuestion, selectedAnimalType: $selectedAnimalType, checkAllFields: checkAllFields)
+                Spacer()
+                    .frame(height: 50)
+                // 세 번째 텍스트: "이 펫의 종은 무엇인가요?"
+                AnimalBreedQuestionView(showBreedQuestion: $showBreedQuestion, selectedBreed: $selectedBreed, checkAllFields: checkAllFields)
+                Spacer()
+                    .frame(height: 50)
+                // 네 번째 텍스트: "이 펫의 털은 무슨 색인가요?"
+                AnimalColorQuestionView(showColorQuestion: $showColorQuestion, selectedColor: $selectedColor, checkAllFields: checkAllFields)
+                Spacer()
+                    .frame(height: 50)
+                // 다섯 번째: 성별 선택
+                animalGenderQuestionView(showGenderPicker: $showGenderPicker, selectedGender: $selectedGender, checkAllFields: checkAllFields)
+                Spacer()
+                    .frame(height: 50)
+                    
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        showTabView = true
+                        let newPet = Pet(name: "고양", age: 2, gender: "♂", personality: "고양이인척 하는 토끼입니다...!", imageStr: "https://emojigraph.org/media/apple/rabbit-face_1f430.png")
+                        modelContext.insert(newPet)
+                    }) {
+                        Text("생성하기")
+                    }
+                    .buttonStyle(BorderedProminentButtonStyle())
+                    .opacity(showCreateButton ? 1 : 0)
+                    .animation(.easeIn(duration: 1), value: showCreateButton)
+                    .fullScreenCover(isPresented: $showTabView) {
+                        CustomTabView()
+                    }
+                    Spacer()
                 }
                 Spacer()
+                    .frame(height: 50)
+                Group{
+                    Text("프로토타입앱으로 실제 선택한 펫이 생성되진 않습니다.")
+                    Text("모든 정보를 입력해야 다음 버튼이 나타납니다.")
+                }
+                .font(.caption)
+                .foregroundStyle(.secondary)
+                
             }
-            Spacer()
-            Group{
-                Text("프로토타입앱으로 실제 선택한 펫이 생성되진 않습니다.")
-                Text("모든 정보를 입력해야 다음 버튼이 나타납니다.")
-            }
-            .font(.caption)
-            .foregroundStyle(.secondary)
-            
         }
         .padding()
         .onAppear {
@@ -118,7 +121,7 @@ struct AnimalTypeQuestionView: View {
             .font(.title3)
             .opacity(showAnimalTypeQuestion ? 1 : 0)
             .animation(.easeIn(duration: 0.5), value: showAnimalTypeQuestion) // 애니메이션 적용
-        TextField("예) 강아지, 고양이", text: $selectedAnimalType)
+        TextFieldWithToolbar(placeholder: "예) 강아지, 고양이", text: $selectedAnimalType)
             .opacity(showAnimalTypeQuestion ? 1 : 0)
             .animation(.easeIn(duration: 0.5), value: showAnimalTypeQuestion)
             .onChange(of: selectedAnimalType) { _ in
@@ -138,7 +141,7 @@ struct AnimalBreedQuestionView: View {
             .font(.title3)
             .opacity(showBreedQuestion ? 1 : 0)
             .animation(.easeIn(duration: 0.5), value: showBreedQuestion)
-        TextField("예) 푸들, 시츄, 먼치킨, 뱅갈", text: $selectedBreed)
+        TextFieldWithToolbar(placeholder: "예) 푸들, 시츄, 먼치킨, 뱅갈", text: $selectedBreed)
             .opacity(showBreedQuestion ? 1 : 0)
             .animation(.easeIn(duration: 0.5), value: showBreedQuestion)
             .onChange(of: selectedBreed) { _ in
@@ -158,7 +161,7 @@ struct AnimalColorQuestionView: View {
             .font(.title3)
             .opacity(showColorQuestion ? 1 : 0)
             .animation(.easeIn(duration: 0.5), value: showColorQuestion)
-        TextField("예) 검정색, 흰색, 회색", text: $selectedColor)
+        TextFieldWithToolbar(placeholder: "예) 검정색, 흰색, 회색", text: $selectedColor)
             .opacity(showColorQuestion ? 1 : 0)
             .animation(.easeIn(duration: 0.5), value: showColorQuestion)
             .onChange(of: selectedColor) { _ in
@@ -172,7 +175,7 @@ struct animalGenderQuestionView: View {
     @Binding var showGenderPicker: Bool
     @Binding var selectedGender: String
     // 성별 목록
-    let genders = ["Male", "Female"]
+    let genders = ["Male", "Female", "Non-binary"]
     var checkAllFields: () -> Void
     
     var body: some View {
@@ -190,6 +193,53 @@ struct animalGenderQuestionView: View {
         .animation(.easeIn(duration: 0.5), value: showGenderPicker)
         .onChange(of: selectedGender) { _ in
             checkAllFields()
+        }
+    }
+}
+
+struct TextFieldWithToolbar: UIViewRepresentable {
+    var placeholder: String
+    @Binding var text: String
+
+    func makeUIView(context: Context) -> UITextField {
+        let textField = UITextField()
+        textField.placeholder = placeholder
+        textField.delegate = context.coordinator
+        
+        // 툴바 추가
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        let flexBarButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let doneButton = UIBarButtonItem(title: "완료", style: .plain, target: context.coordinator, action: #selector(context.coordinator.doneButtonTapped))
+        toolbar.setItems([flexBarButton, doneButton], animated: false)
+        
+        textField.inputAccessoryView = toolbar
+        
+        return textField
+    }
+
+    func updateUIView(_ uiView: UITextField, context: Context) {
+        uiView.text = text
+    }
+
+    func makeCoordinator() -> Coordinator {
+        return Coordinator(self)
+    }
+
+    class Coordinator: NSObject, UITextFieldDelegate {
+        var parent: TextFieldWithToolbar
+
+        init(_ parent: TextFieldWithToolbar) {
+            self.parent = parent
+        }
+        
+        @objc func doneButtonTapped() {
+            // 키보드를 내려줌
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+        }
+
+        func textFieldDidChangeSelection(_ textField: UITextField) {
+            parent.text = textField.text ?? ""
         }
     }
 }

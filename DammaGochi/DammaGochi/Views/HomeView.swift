@@ -99,7 +99,14 @@ struct HomeView: View {
                     }
                 }
             }
-            
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text("DammaGochi")
+                        .fontWeight(.heavy)
+                        .foregroundStyle(.white)
+                }
+            }
         }
     }
     
