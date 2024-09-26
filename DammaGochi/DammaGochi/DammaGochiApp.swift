@@ -12,6 +12,8 @@ import SwiftData
 struct DammaGochiApp: App {
 
     @StateObject var coinManager: CoinManager = CoinManager()
+    @StateObject var petManager: PetManager = PetManager()
+    
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Pet.self,
@@ -31,5 +33,6 @@ struct DammaGochiApp: App {
         }
         .modelContainer(sharedModelContainer)
         .environmentObject(coinManager)
+        .environmentObject(petManager)
     }
 }

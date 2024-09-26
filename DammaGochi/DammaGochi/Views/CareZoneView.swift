@@ -9,6 +9,8 @@ import SwiftUI
 import Lottie
 
 struct CareZoneView: View {
+    @EnvironmentObject var petManager: PetManager
+    
     @State private var energyProgress: Double = 0.0
     @State private var loyaltyProgress: Double = 0.0
     
@@ -28,7 +30,7 @@ struct CareZoneView: View {
                 VStack {
                     Spacer()
                     HStack(alignment: .center){
-                        Text("Kitty")
+                        Text("\(petManager.selectedPet.name)")
                             .foregroundStyle(.white)
                             .font(.title)
                             .bold()
@@ -157,8 +159,8 @@ struct CareZoneView: View {
                     }
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
-                    NavigationLink(destination: MyView()) {
-                        Image("cat")
+                    NavigationLink(destination: ProfileView()) {
+                        Image(petManager.selectedPet.imageStr)
                             .resizable()
                             .frame(width: 35, height: 35)
                             .clipShape(Circle())
@@ -173,5 +175,6 @@ struct CareZoneView: View {
 
 #Preview {
     CareZoneView()
+        .environmentObject(PetManager())
 }
 
