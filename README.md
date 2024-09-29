@@ -1,6 +1,10 @@
 # 🥚🐶 담아고치 
+- swiftUI prototype
+- 2024/09/23 ~ 2024/09/26
+<br/><br/>
+
 # 🥚 ADS
-내 반려동물 캐릭터를 만들어 모바일 디바이스에 담아 다마고치처럼 키우는 게임 어플리케이션 "담아고치"
+**" 내 반려동물 캐릭터를 만들어 모바일 디바이스에 담아 다마고치처럼 키우는 게임 어플리케이션 "담아고치" "** 
 <br/><br/>
 <img src="https://github.com/user-attachments/assets/3a6b17c3-e112-4bee-9e1b-610989963660" width="200" height="200"/> 
 <br/><br/>
@@ -83,15 +87,15 @@
 - (iOS 버전 정보)
 <br/>
 
-# 🥚 개발자
+# 🥚 Developer
 |이름|역할|Git Hub|
 |------|---|---|
 |**홍지수**| PM & CareZone 탭 |[jisooohh](https://github.com/jisooohh)|
-|**강희창**| Store 탭 & 리팩토링 | [seungho](https://github.com/sts06017) |
+|**강희창**| Store 탭 & 리팩토링 |  |
 |**김수은**| Game 탭 & 리팩토링 ||
 |**이소영**| My 탭 & 리팩토링 ||
-|**최승호**| Home 탭 & 시작 전 화면 ||
-<br/>
+|**최승호**| Home 탭 & 시작 전 화면 | [seungho](https://github.com/sts06017) |
+<br/><br/>
 
 
 # 라이선스
