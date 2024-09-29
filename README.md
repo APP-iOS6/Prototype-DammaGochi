@@ -1,15 +1,19 @@
-# 🥚🐶 담아고치 
-- swiftUI prototype
-- 2024/09/23 ~ 2024/09/26
+# 🥚🐶 담아고치
+<div align="center"> 🪐 swiftUI prototype 🪐 </div>
+<br/>
+<div align="center"> 📆 2024/09/23 ~ 2024/09/26 </div>
+<br/>
+<div align="center"> <img src="https://github.com/user-attachments/assets/3a6b17c3-e112-4bee-9e1b-610989963660" width="200" height="200"/> </div>
 <br/><br/>
 
-# 🥚 ADS
-**" 내 반려동물 캐릭터를 만들어 모바일 디바이스에 담아 다마고치처럼 키우는 게임 어플리케이션 "담아고치" "** 
-<br/><br/>
-<img src="https://github.com/user-attachments/assets/3a6b17c3-e112-4bee-9e1b-610989963660" width="200" height="200"/> 
+## 🥚 ADS
+<br/>
+<div align="center">
+ " 내 반려동물 캐릭터를 만들어 모바일 디바이스에 담아 다마고치처럼 키우는 게임 어플리케이션 <담아고치> "
+</div>
 <br/><br/>
 
-# 🥚 주요기능
+# 🥚 주요 기능
  _내가 들고다니는 핸드폰 안에서 사는 반려동물을 키우는 듯한 경험을 제공합니다! 마치, 다마고치처럼요 ..🥚_
  <br/>
 - **시작 전**: 키우고 싶은 **반려동물 캐릭터**를 생성하세요
@@ -22,7 +26,7 @@
 - **🏪 Store** : 아이템을 구매하고 반려동물에게 선물해주세요
 <br/><br/>
 
-# 🥚 동작화면
+# 🥚 동작 화면
 ### Home                      
 - 내가 원하는 생김새의 반려동물을 입양할 수 있습니다 !<br/>
 - AR 기능으로, 내 공간에 반려동물과 함께 있는 것처럼 느낄 수 있어요!<br/>
@@ -83,8 +87,8 @@
 <br/><br/>
 
 # 🥚 작동환경
-- (Xcode 버전 정보)
-- (iOS 버전 정보)
+- Xcode: 16.0
+- iOS: 18.0
 <br/>
 
 # 🥚 Developer
@@ -95,6 +99,7 @@
 |**김수은**| Game 탭 & 리팩토링 ||
 |**이소영**| My 탭 & 리팩토링 ||
 |**최승호**| Home 탭 & 시작 전 화면 | [seungho](https://github.com/sts06017) |
+
 <br/><br/>
 
 
